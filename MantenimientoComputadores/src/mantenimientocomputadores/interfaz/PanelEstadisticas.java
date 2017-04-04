@@ -43,7 +43,7 @@ public class PanelEstadisticas extends javax.swing.JPanel {
         lblResultado = new java.awt.Label();
         jLabel1 = new javax.swing.JLabel();
 
-        btnMasMantenimientos.setText("Equipos con mas mantenimientos");
+        btnMasMantenimientos.setText("Equipos con más mantenimientos");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

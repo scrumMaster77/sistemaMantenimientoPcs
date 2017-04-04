@@ -12,21 +12,29 @@ public class SistemaPrincipal {
     // #[regen=yes,id=DCE.46DB52C0-1A2F-6BD4-F51C-1A4B3BFC7492]
     // </editor-fold> 
     private ArrayList<Computador> computadores;
+    private Computador computador;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.232D4151-4A9B-4E40-D7CB-DD071F92864F]
     // </editor-fold> 
     public SistemaPrincipal () 
     {
-        
+        computadores = new ArrayList<Computador>();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F42DE085-0E27-17F4-68DA-264EB1096A15]
     // </editor-fold> 
-    public void agregarComputador (int codigo, int precio, String encargado, String ubicacion) 
+    public void agregarComputador (int codigo, int precio, String encargado, String ubicacion) throws Exception 
     {
-        
+        Computador computador = buscarComputador(codigo);
+        if(computador==null){
+            computador = new Computador(codigo, precio, encargado, ubicacion);
+            computadores.add(computador);
+        }
+        else{
+            throw new Exception("Ya existe un computador registrado con el codigo: "+ codigo);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -50,8 +58,20 @@ public class SistemaPrincipal {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.D1795AA8-1652-CEA3-9EE2-6283B5FA621A]
     // </editor-fold> 
-    public Computador buscarComputador (int Codigo) {
-        return null;
+    public Computador buscarComputador (int Codigo)
+    {
+        Computador  computador = null;
+        boolean encontrado = false;
+        
+        for(int indice = 0; indice < computadores.size() && !encontrado; indice ++){
+            computador = (Computador) computadores.get(indice);
+            if(computador.getCodigo()==Codigo){
+                encontrado=true;
+            }
+            
+        }
+        return computador;
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

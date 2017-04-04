@@ -12,13 +12,13 @@ import java.awt.Dimension;
  *
  * @author Luis Eduardo
  */
-public class SistemaPrincipal extends javax.swing.JFrame {
+public class SistemaPrincipalnterfaz extends javax.swing.JFrame {
 
     private PanelPrincipal panelp;
     /**
      * Creates new form SistemaPrincipal
      */
-    public SistemaPrincipal() {
+    public SistemaPrincipalnterfaz() {
         initComponents();
     }
 
@@ -163,20 +163,21 @@ public class SistemaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SistemaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SistemaPrincipalnterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SistemaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SistemaPrincipalnterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SistemaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SistemaPrincipalnterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SistemaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SistemaPrincipalnterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SistemaPrincipal().setVisible(true);
+                new SistemaPrincipalnterfaz().setVisible(true);
             }
         });
     }

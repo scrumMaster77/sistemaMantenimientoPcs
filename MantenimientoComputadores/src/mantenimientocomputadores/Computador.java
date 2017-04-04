@@ -1,7 +1,9 @@
 package mantenimientocomputadores;
 
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
 import java.util.ArrayList; 
 import java.util.Date;
+import javax.swing.table.DefaultTableModel;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.263D1C73-FCF0-D0F0-A4A0-9A5C6025613C]
@@ -42,16 +44,18 @@ public class Computador {
     // #[regen=yes,id=DCE.DAE9DE82-2809-BFBC-ECEF-8A5BDBA3BFD1]
     // </editor-fold> 
     private ArrayList<Mantenimiento> mantenimientos;
+    private ArrayList compatudares;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F75894AC-2DE3-9207-A609-6D88250B1A7D]
     // </editor-fold> 
     public Computador (int elCodigo, int elPrecio, String elEncargado, String laUbicacion) 
     {
-        codigo =elCodigo;
-        precio =elPrecio;
-        encargado=elEncargado;
-        ubicacion=laUbicacion;
+        codigo = elCodigo;
+        precio = elPrecio;
+        encargado = elEncargado;
+        ubicacion = laUbicacion;
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

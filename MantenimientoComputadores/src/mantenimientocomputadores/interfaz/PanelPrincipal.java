@@ -5,11 +5,13 @@
  */
 package mantenimientocomputadores.interfaz;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.ListSelectionModel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import mantenimientocomputadores.Computador;
+import mantenimientocomputadores.SistemaPrincipal;
 
 /**
  *
@@ -17,17 +19,25 @@ import javax.swing.ListSelectionModel;
  */
 public class PanelPrincipal extends javax.swing.JPanel {
 
-    private DefaultListModel modelo;
     
+    private Computador computador;
+    private SistemaPrincipalnterfaz principal;
+    DefaultTableModel tablaPc;
+    private SistemaPrincipal sistemaPrincipal;
     /**
      * Creates new form PanelMantenimiento
      */
     public PanelPrincipal() {
-        initComponents();
         
-   
-        //instanciamos el modelo
-        modelo = new DefaultListModel();
+        sistemaPrincipal = new SistemaPrincipal();
+        initComponents();
+        tablaPc = new DefaultTableModel();
+        tablaPc.addColumn("Código");
+        tablaPc.addColumn("Precio");
+        tablaPc.addColumn("Encargado");
+        tablaPc.addColumn("Ubicación");
+        this.tablaComputadores.setModel(tablaPc);
+        
     }
 
     /**
@@ -42,19 +52,19 @@ public class PanelPrincipal extends javax.swing.JPanel {
         jTabbedPane6 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        lblCodigo = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lb_codigo = new javax.swing.JLabel();
+        lbl_precio = new javax.swing.JLabel();
+        lbl_encargado = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
         txtEncargadoPC = new javax.swing.JTextField();
         txtUbicacion = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        lbl_ubicacion = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        btnAgregar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
+        btn_AgregarComputador = new javax.swing.JButton();
+        btn_ModificarComputador = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaComputadores = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -70,12 +80,12 @@ public class PanelPrincipal extends javax.swing.JPanel {
         txtMouse = new javax.swing.JTextField();
         txtUnidad_optica = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btn_agregarCaracteristica = new javax.swing.JButton();
+        btn_ModificarCaracteristica = new javax.swing.JButton();
+        btn_eliminarCaracteristica = new javax.swing.JButton();
+        btn_cancelar = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaCaracteristicas = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -84,19 +94,19 @@ public class PanelPrincipal extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        txtSistemaOperativo = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
+        txt_SistemaOperativo = new javax.swing.JTextField();
+        txt_ofimatica = new javax.swing.JTextField();
+        txt_graficos = new javax.swing.JTextField();
+        txt_antivirus = new javax.swing.JTextField();
+        txt_lenguajepro = new javax.swing.JTextField();
+        txt_IDE = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btn_agregarPrograma = new javax.swing.JButton();
+        btn_modificarPrograma = new javax.swing.JButton();
+        btn_eliminarPrograma = new javax.swing.JButton();
+        btn_cancelarPrograma = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tablaProgramas = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -109,20 +119,20 @@ public class PanelPrincipal extends javax.swing.JPanel {
         txtDescripcion = new javax.swing.JTextArea();
         dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
         jPanel13 = new javax.swing.JPanel();
-        btnAgregarMantenimiento = new javax.swing.JButton();
-        btnModificarMantenimiento = new javax.swing.JButton();
-        btnEliminarMantenimiento = new javax.swing.JButton();
-        btnCancelarMantenimiento = new javax.swing.JButton();
+        btn_AgregarMantenimiento = new javax.swing.JButton();
+        btn_ModificarMantenimiento = new javax.swing.JButton();
+        btn_EliminarMantenimiento = new javax.swing.JButton();
+        btn_CancelarMantenimiento = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tablaMantenimientos = new javax.swing.JTable();
 
         jPanel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lblCodigo.setText("Còdigo:");
+        lb_codigo.setText("Còdigo:");
 
-        jLabel2.setText("Precio:");
+        lbl_precio.setText("Precio:");
 
-        jLabel3.setText("Encargado:");
+        lbl_encargado.setText("Encargado:");
 
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +140,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setText("Ubicaciòn:");
+        lbl_ubicacion.setText("Ubicaciòn:");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -139,10 +149,10 @@ public class PanelPrincipal extends javax.swing.JPanel {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(lblCodigo)
-                    .addComponent(jLabel4))
+                    .addComponent(lbl_encargado)
+                    .addComponent(lbl_precio)
+                    .addComponent(lb_codigo)
+                    .addComponent(lbl_ubicacion))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtCodigo)
@@ -157,32 +167,32 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCodigo))
+                    .addComponent(lb_codigo))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(lbl_precio))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEncargadoPC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(lbl_encargado))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(lbl_ubicacion))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        btn_AgregarComputador.setText("Agregar");
+        btn_AgregarComputador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
+                btn_AgregarComputadorActionPerformed(evt);
             }
         });
 
-        btnModificar.setText("Modificar");
+        btn_ModificarComputador.setText("Modificar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -190,9 +200,9 @@ public class PanelPrincipal extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(btnAgregar)
+                .addComponent(btn_AgregarComputador)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(btnModificar)
+                .addComponent(btn_ModificarComputador)
                 .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
@@ -200,12 +210,12 @@ public class PanelPrincipal extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregar)
-                    .addComponent(btnModificar))
+                    .addComponent(btn_AgregarComputador)
+                    .addComponent(btn_ModificarComputador))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaComputadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -221,7 +231,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaComputadores);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -320,13 +330,18 @@ public class PanelPrincipal extends javax.swing.JPanel {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton1.setText("Agregar");
+        btn_agregarCaracteristica.setText("Agregar");
 
-        jButton2.setText("Modificar");
+        btn_ModificarCaracteristica.setText("Modificar");
 
-        jButton3.setText("Eliminar");
+        btn_eliminarCaracteristica.setText("Eliminar");
 
-        jButton4.setText("Cancelar");
+        btn_cancelar.setText("Cancelar");
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -336,13 +351,13 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(btn_eliminarCaracteristica)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4))
+                        .addComponent(btn_cancelar))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btn_agregarCaracteristica)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(btn_ModificarCaracteristica)))
                 .addGap(29, 29, 29))
         );
         jPanel3Layout.setVerticalGroup(
@@ -351,17 +366,17 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btn_agregarCaracteristica)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
+                        .addComponent(btn_eliminarCaracteristica))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(btn_ModificarCaracteristica)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)))
+                        .addComponent(btn_cancelar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCaracteristicas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -377,7 +392,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane7.setViewportView(jTable2);
+        jScrollPane7.setViewportView(tablaCaracteristicas);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -436,12 +451,12 @@ public class PanelPrincipal extends javax.swing.JPanel {
                     .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSistemaOperativo)
-                    .addComponent(jTextField6)
-                    .addComponent(jTextField7)
-                    .addComponent(jTextField8)
-                    .addComponent(jTextField9)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
+                    .addComponent(txt_SistemaOperativo)
+                    .addComponent(txt_ofimatica)
+                    .addComponent(txt_graficos)
+                    .addComponent(txt_antivirus)
+                    .addComponent(txt_lenguajepro)
+                    .addComponent(txt_IDE, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
@@ -450,47 +465,47 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(txtSistemaOperativo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_SistemaOperativo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_ofimatica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_graficos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_antivirus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_lenguajepro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_IDE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jPanel11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton5.setText("Agregar");
+        btn_agregarPrograma.setText("Agregar");
 
-        jButton6.setText("Modificar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btn_modificarPrograma.setText("Modificar");
+        btn_modificarPrograma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btn_modificarProgramaActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Eliminar");
+        btn_eliminarPrograma.setText("Eliminar");
 
-        jButton8.setText("Cancelar");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btn_cancelarPrograma.setText("Cancelar");
+        btn_cancelarPrograma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btn_cancelarProgramaActionPerformed(evt);
             }
         });
 
@@ -501,12 +516,12 @@ public class PanelPrincipal extends javax.swing.JPanel {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
-                    .addComponent(jButton7))
+                    .addComponent(btn_agregarPrograma)
+                    .addComponent(btn_eliminarPrograma))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_modificarPrograma, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                    .addComponent(btn_cancelarPrograma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40))
         );
         jPanel11Layout.setVerticalGroup(
@@ -516,17 +531,17 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton5)
-                            .addComponent(jButton6))
+                            .addComponent(btn_agregarPrograma)
+                            .addComponent(btn_modificarPrograma))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7))
+                        .addComponent(btn_eliminarPrograma))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(jButton8)))
+                        .addComponent(btn_cancelarPrograma)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tablaProgramas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -542,7 +557,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane8.setViewportView(jTable3);
+        jScrollPane8.setViewportView(tablaProgramas);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -640,13 +655,13 @@ public class PanelPrincipal extends javax.swing.JPanel {
 
         jPanel13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnAgregarMantenimiento.setText("Agregar");
+        btn_AgregarMantenimiento.setText("Agregar");
 
-        btnModificarMantenimiento.setText("Modificar");
+        btn_ModificarMantenimiento.setText("Modificar");
 
-        btnEliminarMantenimiento.setText("Eliminar");
+        btn_EliminarMantenimiento.setText("Eliminar");
 
-        btnCancelarMantenimiento.setText("Cancelar");
+        btn_CancelarMantenimiento.setText("Cancelar");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -656,13 +671,13 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addComponent(btnEliminarMantenimiento)
+                        .addComponent(btn_EliminarMantenimiento)
                         .addGap(61, 61, 61)
-                        .addComponent(btnCancelarMantenimiento))
+                        .addComponent(btn_CancelarMantenimiento))
                     .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addComponent(btnAgregarMantenimiento)
+                        .addComponent(btn_AgregarMantenimiento)
                         .addGap(61, 61, 61)
-                        .addComponent(btnModificarMantenimiento)))
+                        .addComponent(btn_ModificarMantenimiento)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
@@ -670,16 +685,16 @@ public class PanelPrincipal extends javax.swing.JPanel {
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregarMantenimiento)
-                    .addComponent(btnModificarMantenimiento))
+                    .addComponent(btn_AgregarMantenimiento)
+                    .addComponent(btn_ModificarMantenimiento))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliminarMantenimiento)
-                    .addComponent(btnCancelarMantenimiento))
+                    .addComponent(btn_EliminarMantenimiento)
+                    .addComponent(btn_CancelarMantenimiento))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMantenimientos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -695,7 +710,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane9.setViewportView(jTable4);
+        jScrollPane9.setViewportView(tablaMantenimientos);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -743,42 +758,46 @@ public class PanelPrincipal extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btn_cancelarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarProgramaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btn_cancelarProgramaActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btn_modificarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarProgramaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btn_modificarProgramaActionPerformed
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    private void btn_AgregarComputadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarComputadorActionPerformed
         // TODO add your handling code here:
 
-        agregarCodigo();
-
-    }//GEN-LAST:event_btnAgregarActionPerformed
+        agregarComputador();
+        
+    }//GEN-LAST:event_btn_AgregarComputadorActionPerformed
 
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoActionPerformed
 
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        // TODO add your handling code here:       
+    }//GEN-LAST:event_btn_cancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnAgregarMantenimiento;
-    private javax.swing.JButton btnCancelarMantenimiento;
-    private javax.swing.JButton btnEliminarMantenimiento;
-    private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnModificarMantenimiento;
+    private javax.swing.JButton btn_AgregarComputador;
+    private javax.swing.JButton btn_AgregarMantenimiento;
+    private javax.swing.JButton btn_CancelarMantenimiento;
+    private javax.swing.JButton btn_EliminarMantenimiento;
+    private javax.swing.JButton btn_ModificarCaracteristica;
+    private javax.swing.JButton btn_ModificarComputador;
+    private javax.swing.JButton btn_ModificarMantenimiento;
+    private javax.swing.JButton btn_agregarCaracteristica;
+    private javax.swing.JButton btn_agregarPrograma;
+    private javax.swing.JButton btn_cancelar;
+    private javax.swing.JButton btn_cancelarPrograma;
+    private javax.swing.JButton btn_eliminarCaracteristica;
+    private javax.swing.JButton btn_eliminarPrograma;
+    private javax.swing.JButton btn_modificarPrograma;
     private datechooser.beans.DateChooserCombo dateChooserCombo1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -789,10 +808,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -816,16 +832,14 @@ public class PanelPrincipal extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane6;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
-    private javax.swing.JLabel lblCodigo;
+    private javax.swing.JLabel lb_codigo;
+    private javax.swing.JLabel lbl_encargado;
+    private javax.swing.JLabel lbl_precio;
+    private javax.swing.JLabel lbl_ubicacion;
+    private javax.swing.JTable tablaCaracteristicas;
+    private javax.swing.JTable tablaComputadores;
+    private javax.swing.JTable tablaMantenimientos;
+    private javax.swing.JTable tablaProgramas;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCpu;
     private javax.swing.JTextArea txtDescripcion;
@@ -836,15 +850,41 @@ public class PanelPrincipal extends javax.swing.JPanel {
     private javax.swing.JTextField txtMouse;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtRam;
-    private javax.swing.JTextField txtSistemaOperativo;
     private javax.swing.JTextField txtTeclado;
     private javax.swing.JTextField txtUbicacion;
     private javax.swing.JTextField txtUnidad_optica;
+    private javax.swing.JTextField txt_IDE;
+    private javax.swing.JTextField txt_SistemaOperativo;
+    private javax.swing.JTextField txt_antivirus;
+    private javax.swing.JTextField txt_graficos;
+    private javax.swing.JTextField txt_lenguajepro;
+    private javax.swing.JTextField txt_ofimatica;
     // End of variables declaration//GEN-END:variables
 
-    public void agregarCodigo() 
-    {
-    
+    public void agregarComputador() {
+
+        String[] datos = new String[4];
+        datos[0] = txtCodigo.getText();
+        txtCodigo.setText(null);
+        datos[1] = txtPrecio.getText();
+        txtPrecio.setText(null);
+        datos[2] = txtEncargadoPC.getText();
+        txtEncargadoPC.setText(null);
+        datos[3] = txtUbicacion.getText();
+        txtUbicacion.setText(null);
+
+        try {
+            if (datos[0].equals("") || datos[1].equals("") || datos[2].equals("") || datos[3].equals("")) {
+                JOptionPane.showMessageDialog(this, "Todos los datos son requeridos", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                sistemaPrincipal.agregarComputador(Integer.parseInt(datos[0]), Integer.parseInt(datos[1]), datos[2], datos[3]);
+                tablaPc.addRow(datos);
+                JOptionPane.showMessageDialog(this, "Computador registrado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
-   
 }
