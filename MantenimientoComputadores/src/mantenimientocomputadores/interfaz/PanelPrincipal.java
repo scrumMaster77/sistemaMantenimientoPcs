@@ -10,8 +10,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import mantenimientocomputadores.Computador;
-import mantenimientocomputadores.SistemaPrincipal;
+import mantenimientocomputadores.mundo.Computador;
+import mantenimientocomputadores.mundo.SistemaPrincipal;
 
 /**
  *
@@ -19,11 +19,43 @@ import mantenimientocomputadores.SistemaPrincipal;
  */
 public class PanelPrincipal extends javax.swing.JPanel {
 
-    
+    /**
+     * Completar
+     */
     private Computador computador;
+    
+    /**
+     * Completar
+     */
     private SistemaPrincipalnterfaz principal;
+    
+    /**
+     * Completar
+     */
     DefaultTableModel tablaPc;
+    
+    /**
+     * Completar
+     */
+    DefaultTableModel tablaCaracteristicaFisica;
+    
+    /**
+     * Completar
+     */
+    DefaultTableModel tablaPrograma;
+    
+    /**
+     * Completar
+     */
+    DefaultTableModel tablaMantenimiento; 
+    
+    /**
+     * Completar
+     */
     private SistemaPrincipal sistemaPrincipal;
+    
+    //--------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
     /**
      * Creates new form PanelMantenimiento
      */
@@ -31,12 +63,24 @@ public class PanelPrincipal extends javax.swing.JPanel {
         
         sistemaPrincipal = new SistemaPrincipal();
         initComponents();
+        
+        //Creación de la tabla  computadores 
         tablaPc = new DefaultTableModel();
         tablaPc.addColumn("Código");
         tablaPc.addColumn("Precio");
         tablaPc.addColumn("Encargado");
         tablaPc.addColumn("Ubicación");
         this.tablaComputadores.setModel(tablaPc);
+        
+        //Creación de la tabla caracterisiticas
+        tablaCaracteristicaFisica = new DefaultTableModel();
+        tablaCaracteristicaFisica.addColumn("Cpu");
+        tablaCaracteristicaFisica.addColumn("Ram");
+        tablaCaracteristicaFisica.addColumn("Disco duro");
+        tablaCaracteristicaFisica.addColumn("Teclado");
+        tablaCaracteristicaFisica.addColumn("Mouse");
+        tablaCaracteristicaFisica.addColumn("Unidad óptica");
+        this.tablaCaracteristicas.setModel(tablaCaracteristicaFisica);
         
     }
 
@@ -331,6 +375,11 @@ public class PanelPrincipal extends javax.swing.JPanel {
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btn_agregarCaracteristica.setText("Agregar");
+        btn_agregarCaracteristica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregarCaracteristicaActionPerformed(evt);
+            }
+        });
 
         btn_ModificarCaracteristica.setText("Modificar");
 
@@ -757,15 +806,26 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Completar
+     * @param evt 
+     */
     private void btn_cancelarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarProgramaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_cancelarProgramaActionPerformed
 
+    /**
+     * Completar
+     * @param evt 
+     */
     private void btn_modificarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarProgramaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_modificarProgramaActionPerformed
 
+    /**
+     * Completar
+     * @param evt 
+     */
     private void btn_AgregarComputadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarComputadorActionPerformed
         // TODO add your handling code here:
 
@@ -777,9 +837,22 @@ public class PanelPrincipal extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoActionPerformed
 
+    /**
+     * Completar
+     * @param evt 
+     */
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
         // TODO add your handling code here:       
     }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    /**
+     * Completar
+     * @param evt 
+     */
+    private void btn_agregarCaracteristicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarCaracteristicaActionPerformed
+        // TODO add your handling code here:
+        agregarCaracteristica();
+    }//GEN-LAST:event_btn_agregarCaracteristicaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -861,6 +934,12 @@ public class PanelPrincipal extends javax.swing.JPanel {
     private javax.swing.JTextField txt_ofimatica;
     // End of variables declaration//GEN-END:variables
 
+    //--------------------------------------------------------------------------
+    // Metodos del panel principal de la interfaz
+    //--------------------------------------------------------------------------
+    /**
+     * Completar
+     */
     public void agregarComputador() {
 
         String[] datos = new String[4];
@@ -886,5 +965,28 @@ public class PanelPrincipal extends javax.swing.JPanel {
             Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    /**
+     * Completar
+     */
+    private void agregarCaracteristica() {
+        String[] caracteristicas = new String[6];
+        caracteristicas[0] = txtCpu.getText();
+        txtCpu.setText("");
+        caracteristicas[1] = txtRam.getText();
+        txtRam.setText("");
+        caracteristicas[2] = txtDisco_duro.getText();
+        txtDisco_duro.setText("");
+        caracteristicas[3] = txtTeclado.getText();
+        txtTeclado.setText("");
+        caracteristicas[4] = txtMouse.getText();
+        txtMouse.setText("");
+        caracteristicas[5] = txtUnidad_optica.getText();
+        txtUnidad_optica.setText("");
+        
+        //sistemaPrincipal.agregarCaracteristicafisica(caracteristicas[0],caracteristicas[1],caracteristicas[2]);
+        tablaCaracteristicaFisica.addRow(caracteristicas);
+       
     }
 }

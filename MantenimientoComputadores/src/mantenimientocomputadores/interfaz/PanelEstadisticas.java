@@ -44,6 +44,11 @@ public class PanelEstadisticas extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         btnMasMantenimientos.setText("Equipos con más mantenimientos");
+        btnMasMantenimientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasMantenimientosActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -82,6 +87,11 @@ public class PanelEstadisticas extends javax.swing.JPanel {
         jTabbedPane1.addTab("Equipos más mantenimiento", jPanel1);
 
         btnMenosCaracteristicas.setText("Equipos con menor caracteristicas");
+        btnMenosCaracteristicas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenosCaracteristicasActionPerformed(evt);
+            }
+        });
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,6 +132,11 @@ public class PanelEstadisticas extends javax.swing.JPanel {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Opciones"));
 
         btnMostrarMantenimientosAnio.setText("Mantenimientos hechos en un año");
+        btnMostrarMantenimientosAnio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarMantenimientosAnioActionPerformed(evt);
+            }
+        });
 
         lblResultado.setText("result");
 
@@ -190,6 +205,30 @@ public class PanelEstadisticas extends javax.swing.JPanel {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    /**
+     * Completar
+     * @param evt 
+     */
+    private void btnMasMantenimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasMantenimientosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMasMantenimientosActionPerformed
+
+    /**
+     * Completar
+     * @param evt 
+     */
+    private void btnMenosCaracteristicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenosCaracteristicasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMenosCaracteristicasActionPerformed
+
+    /**
+     * Completar
+     * @param evt 
+     */
+    private void btnMostrarMantenimientosAnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarMantenimientosAnioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMostrarMantenimientosAnioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

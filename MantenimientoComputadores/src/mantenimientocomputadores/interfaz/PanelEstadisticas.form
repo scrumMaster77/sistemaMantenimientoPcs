@@ -82,6 +82,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Equipos con m&#xe1;s mantenimientos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMasMantenimientosActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
@@ -165,6 +168,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Equipos con menor caracteristicas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMenosCaracteristicasActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
               <AuxValues>
@@ -289,6 +295,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Mantenimientos hechos en un a&#xf1;o"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostrarMantenimientosAnioActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="java.awt.Label" name="lblResultado">
                   <Properties>

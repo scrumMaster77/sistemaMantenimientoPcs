@@ -129,17 +129,29 @@ public class SistemaPrincipalnterfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Completar
+     * @param evt 
+     */
     private void btnAgregarComputadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarComputadorActionPerformed
         // TODO add your handling code here:
         DialogoPanelPrincipal p = new DialogoPanelPrincipal(new javax.swing.JFrame(),true);
         p.setVisible(true);
     }//GEN-LAST:event_btnAgregarComputadorActionPerformed
 
+    /**
+     * Completar
+     * @param evt 
+     */
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    /**
+     * Completar
+     * @param evt 
+     */
     private void btnEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasActionPerformed
         // TODO add your handling code here:
         DialogoEstadisticas est = new DialogoEstadisticas(new javax.swing.JFrame(),true);

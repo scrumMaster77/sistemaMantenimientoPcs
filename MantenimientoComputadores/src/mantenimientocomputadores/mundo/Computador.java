@@ -1,4 +1,4 @@
-package mantenimientocomputadores;
+package mantenimientocomputadores.mundo;
 
 import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
 import java.util.ArrayList; 
@@ -8,47 +8,85 @@ import javax.swing.table.DefaultTableModel;
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.263D1C73-FCF0-D0F0-A4A0-9A5C6025613C]
 // </editor-fold> 
+/**
+ * Completar
+ * @author Luis Eduardo
+ */
 public class Computador {
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F56FB90D-6C3F-AC89-CCBC-963864E49768]
     // </editor-fold> 
+    /**
+     * Completar
+     */
     private int codigo;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.26C3E05D-D6E4-0060-BA4A-C55979A1C8B5]
     // </editor-fold> 
+    /**
+     * Completar
+     */
     private double precio;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.AE32D37C-014C-4175-A4A4-222DD5AEF3A9]
     // </editor-fold> 
+    /**
+     * Completar
+     */
     private String encargado;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.D8049699-3DC1-9B26-E31C-9FB25A6289EA]
     // </editor-fold> 
+    /**
+     * Completar
+     */
     private String ubicacion;
-
+  
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.084C142F-2373-0860-8774-7D7BD1AAB2D0]
     // </editor-fold> 
+    /**
+     * Completar
+     */
     private ArrayList<CaracteristicaFisica> caracteristicas;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.D3EB4F04-246A-9999-A6E7-B70BD891B5AB]
     // </editor-fold> 
+    /**
+     * Completar
+     */
     private ArrayList<ProgramaInstalado> programas;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.DAE9DE82-2809-BFBC-ECEF-8A5BDBA3BFD1]
     // </editor-fold> 
+    /**
+     * Completar
+     */
     private ArrayList<Mantenimiento> mantenimientos;
+    
+    /**
+     * Completar
+     */
     private ArrayList compatudares;
 
+    //--------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F75894AC-2DE3-9207-A609-6D88250B1A7D]
     // </editor-fold> 
+    /**
+     * Completar
+     * @param elCodigo
+     * @param elPrecio
+     * @param elEncargado
+     * @param laUbicacion 
+     */
     public Computador (int elCodigo, int elPrecio, String elEncargado, String laUbicacion) 
     {
         codigo = elCodigo;
@@ -61,6 +99,10 @@ public class Computador {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.0B6B0203-97FC-C712-F636-9443AA6DAEB6]
     // </editor-fold> 
+    /**
+     * Completar
+     * @return 
+     */
     public int getCodigo () {
         return codigo;
     }
@@ -68,6 +110,10 @@ public class Computador {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.49397215-B14D-D37B-61A9-DD57A947335E]
     // </editor-fold> 
+    /**
+     * Completar
+     * @param val 
+     */
     public void setCodigo (int val) {
         this.codigo = val;
     }
@@ -75,6 +121,10 @@ public class Computador {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.355B37CE-8CC8-40BD-B976-B5A27ECEC1D8]
     // </editor-fold> 
+    /**
+     * Completar
+     * @return 
+     */
     public String getEncargado () {
         return encargado;
     }
@@ -82,6 +132,10 @@ public class Computador {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.E53CC9D3-049D-F5D4-3434-97DE7E2B1E7E]
     // </editor-fold> 
+    /**
+     * Completar
+     * @param val 
+     */
     public void setEncargado (String val) {
         this.encargado = val;
     }
@@ -89,6 +143,10 @@ public class Computador {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.96DDB507-752F-4CB6-D300-4667633CD38A]
     // </editor-fold> 
+    /**
+     * Completar
+     * @return 
+     */
     public double getPrecio () {
         return precio;
     }
@@ -96,6 +154,10 @@ public class Computador {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.25DB6D6D-3D5B-4236-E620-E8485B3824F0]
     // </editor-fold> 
+    /**
+     * Completar
+     * @param val 
+     */
     public void setPrecio (double val) {
         this.precio = val;
     }
@@ -103,6 +165,10 @@ public class Computador {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.F2088934-B14C-E4F6-2103-F4E0DE77741E]
     // </editor-fold> 
+    /**
+     * Completar
+     * @return 
+     */
     public String getUbicacion () {
         return ubicacion;
     }
@@ -110,67 +176,113 @@ public class Computador {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.380635A7-6182-845A-4AFA-79FA010C461C]
     // </editor-fold> 
+    /**
+     * Completar    
+     * @param val 
+     */
     public void setUbicacion (String val) {
         this.ubicacion = val;
     }
 
+    //--------------------------------------------------------------------------
+    //Metodos de la clase computador
+    //--------------------------------------------------------------------------
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.8EC1A95D-DA74-D579-7E38-70C9580D04B3]
     // </editor-fold> 
+    /**
+     * Completar
+     * @param laFecha
+     * @param elNombreTecnico
+     * @param laDescripcion 
+     */
     public void agregarMantenimiento (Date laFecha, String elNombreTecnico, String laDescripcion) {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.DB22F53A-18FC-EE82-7D9B-89D87B9BEC70]
     // </editor-fold> 
-    public void agregarProgramaInstalado (String elNombre, String laCategoria) {
+    /**
+     * Completar
+     * @param elDescripcion
+     * @param laCategoria 
+     */
+    public void agregarProgramaInstalado (String elDescripcion, String laCategoria) {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.1A2A7AF0-B787-E8F1-33FE-24B371127921]
     // </editor-fold> 
-    public void agregarCaraceristicaFisica (String elNombre, String laDescripcion) {
+    /**
+     * Completar
+     * @param laDescripcion
+     * @param laCategoria 
+     */
+    public void agregarCaraceristicaFisica (String laDescripcion, String laCategoria) {
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F27E48F8-E254-9A71-79AB-80C5A3C1CDA7]
     // </editor-fold> 
+    /**
+     * Completar
+     */
     public void eliminarMantenimiento () {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.E24B06C3-BA8C-AB3D-EC92-A5E0BE328CEC]
     // </editor-fold> 
+    /**
+     * Completar
+     */
     public void eliminarProgramaInstalado () {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.806ACAF4-F5A4-4147-E23C-FFA225CDB7E8]
     // </editor-fold> 
+    /**
+     * Completar
+     */
     public void eliminarCaracteristicaFisica () {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.0D26F689-41A3-78C6-F8BE-26F0FFD0230E]
     // </editor-fold> 
+    /**
+     * Completar
+     */
     public void modificarMantenimiento () {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.521ED7A6-A809-BF89-0328-564F91A3F53B]
     // </editor-fold> 
+    /**
+     * Completar
+     */
     public void modificarProgramaInstalado () {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.035164BD-9837-71F4-5242-0B322F670408]
     // </editor-fold> 
+    /**
+     * Completar
+     */
     public void modificarCaracteristicaFisica () {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.45F00FEF-3E4F-8486-E9EF-77DCF2B31361]
     // </editor-fold> 
+    /**
+     * Completar
+     * @return 
+     */
     public ArrayList<CaracteristicaFisica> getCaracteristicas () {
         return caracteristicas;
     }
@@ -178,6 +290,10 @@ public class Computador {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.966F1E5B-A572-61A7-CFF5-3EDB4E22ACA8]
     // </editor-fold> 
+    /**
+     * Completar
+     * @param val 
+     */
     public void setCaracteristicas (ArrayList<CaracteristicaFisica> val) {
         this.caracteristicas = val;
     }
@@ -185,6 +301,10 @@ public class Computador {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.64F264DA-7BAD-658D-ACFD-FDF35A2E5D89]
     // </editor-fold> 
+    /**
+     * Completar
+     * @return 
+     */
     public ArrayList<Mantenimiento> getMantenimientos () {
         return mantenimientos;
     }
@@ -192,6 +312,10 @@ public class Computador {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.05831DE9-B9C4-6F1B-A99B-F2261AF961DC]
     // </editor-fold> 
+    /**
+     * Completar
+     * @param val 
+     */
     public void setMantenimientos (ArrayList<Mantenimiento> val) {
         this.mantenimientos = val;
     }
@@ -199,6 +323,10 @@ public class Computador {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.6A8823D2-2E52-199C-C7DC-0ADBFF6300E2]
     // </editor-fold> 
+    /**
+     * Completar
+     * @return 
+     */
     public ArrayList<ProgramaInstalado> getProgramas () {
         return programas;
     }
@@ -206,6 +334,10 @@ public class Computador {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.FA1B595A-852A-36A6-2F6D-5F9C8A953EC0]
     // </editor-fold> 
+    /**
+     * Completar
+     * @param val 
+     */
     public void setProgramas (ArrayList<ProgramaInstalado> val) {
         this.programas = val;
     }
