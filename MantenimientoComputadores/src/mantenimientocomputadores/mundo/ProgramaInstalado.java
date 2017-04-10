@@ -16,7 +16,7 @@ public class ProgramaInstalado {
     /**
      * Completar
      */
-    public static final String SISTEMA_OPERATIVO = "Sistema operativo";
+    public static final String SISTEMA_OPERATIVO = "Sistema operatívo";
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.E8D2EFB0-74B9-4C91-B762-3F55F59CBCB2]
@@ -24,7 +24,7 @@ public class ProgramaInstalado {
     /**
      * Completar
      */
-    public static final String OFIMATICA = "Ofimatica";
+    public static final String OFIMATICA = "Ofimática";
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.1099F1D5-6B6F-6D60-0358-CCABD4107D57]
@@ -32,7 +32,7 @@ public class ProgramaInstalado {
     /**
      * Completar
      */
-    public static final String GRAFICOS = "Graficos";
+    public static final String GRAFICOS = "Gráficos";
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.DA264026-139A-C3EA-E5AE-5994741FA00C]
@@ -57,15 +57,7 @@ public class ProgramaInstalado {
      * Completar
      */
     public static final String IDE = "IDE";
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.C9BA177C-6120-31F5-98BB-96681AE7F524]
-    // </editor-fold> 
-    /**
-     * Completar
-     */
-    public static final String GRAFICO = "Graficos";
-
+    
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.13E45DD6-D867-FD13-C06A-DCF15CE4B759]
     // </editor-fold> 
@@ -98,14 +90,15 @@ public class ProgramaInstalado {
     /**
      * Completar
      * @param elCodigo
-     * @param laDescripcion
      * @param laCategoria 
+     * @param laDescripcion
      */
-    public ProgramaInstalado (int elCodigo, String laDescripcion, String laCategoria)
+    public ProgramaInstalado (int elCodigo, String laCategoria,String laDescripcion)
     {
         codigo = elCodigo;
-        descripcion = laDescripcion;
         categoria = laCategoria;
+        descripcion = laDescripcion;
+       
     }
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.FB371F91-B69C-9F39-083F-3D2B388345CB]
@@ -171,6 +164,30 @@ public class ProgramaInstalado {
      */
     public void setDescripcion (String val) {
         this.descripcion = val;
+    }
+
+    public String getSISTEMA_OPERATIVO() {
+        return SISTEMA_OPERATIVO;
+    }
+
+    public String getOFIMATICA() {
+        return OFIMATICA;
+    }
+
+    public String getGRAFICOS() {
+        return GRAFICOS;
+    }
+
+    public String getANTIVIRUS() {
+        return ANTIVIRUS;
+    }
+
+    public String getLENGUAJE_PROGRAMACION() {
+        return LENGUAJE_PROGRAMACION;
+    }
+
+    public String getIDE() {
+        return IDE;
     }
 
 }

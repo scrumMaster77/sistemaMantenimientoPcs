@@ -56,7 +56,7 @@ public class CaracteristicaFisica {
     /**
      * Completar
      */
-    public static final String UNIDAD_OPTICA = "Unidad Optica";
+    public static final String UNIDAD_OPTICA = "Unidad óptica";
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.C2A35C8C-2835-1F12-A6AC-F19EEE627851]
@@ -93,11 +93,12 @@ public class CaracteristicaFisica {
      * @param laDescripcion
      * @param laCategoria 
      */
-    public CaracteristicaFisica (int elCodigo, String laDescripcion, String laCategoria)
+    public CaracteristicaFisica (int elCodigo, String laCategoria,String laDescripcion)
     {
         codigo = elCodigo;
-        descripcion = laDescripcion;
         categoria = laCategoria;
+        descripcion = laDescripcion;
+        
         
     }
 
@@ -165,6 +166,34 @@ public class CaracteristicaFisica {
      */
     public void setDescripcion (String val) {
         this.descripcion = val;
+    }
+
+    /**
+     * Completar
+     * @return 
+     */
+    public String getCPU() {
+        return CPU;
+    }
+
+    public String getRAM() {
+        return RAM;
+    }
+
+    public String getDISCO_DURO() {
+        return DISCO_DURO;
+    }
+
+    public String getTECLADO() {
+        return TECLADO;
+    }
+
+    public String getMOUSE() {
+        return MOUSE;
+    }
+
+    public String getUNIDAD_OPTICA() {
+        return UNIDAD_OPTICA;
     }
 
 }

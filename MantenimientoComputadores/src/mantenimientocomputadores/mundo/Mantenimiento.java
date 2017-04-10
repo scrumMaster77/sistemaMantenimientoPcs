@@ -57,9 +57,10 @@ public class Mantenimiento {
      * @param laDescripcion
      * @param elNombreTecnico 
      */
-    public Mantenimiento (int elCodigo, Date laFecha, String laDescripcion, String elNombreTecnico)
+    public Mantenimiento (int elCodigo, Date laFecha,String elNombreTecnico,String laDescripcion)
     {
         codigo = elCodigo;
+        fecha = laFecha;
         descripcion = laDescripcion;
         nombreTecnicoMantenimiento = elNombreTecnico;
     }

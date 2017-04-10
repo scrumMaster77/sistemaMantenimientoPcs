@@ -1,7 +1,10 @@
 package mantenimientocomputadores.mundo;
 
 import java.awt.List;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList; 
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.E585918A-CA63-57D0-C1F2-E632F4A595D1]
@@ -69,7 +72,7 @@ public class SistemaPrincipal {
      * @param ubicacion
      * @throws Exception 
      */
-    public void agregarComputador (int codigo, int precio, String encargado, String ubicacion) throws Exception 
+    public void agregarComputador(int codigo, int precio, String encargado, String ubicacion) throws Exception 
     {
         Computador computador = buscarComputador(codigo);
         if(computador==null){
@@ -82,41 +85,71 @@ public class SistemaPrincipal {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.825669A4-16B7-FE16-67BC-251CE446F967]
-    // </editor-fold> 
-    /**
-     * Completar
-     * @param codigo 
-     */
-    public void agregarMantenimiento (int codigo) {
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.52A03B08-3F78-A9B6-FFEA-8AB0BDD09253]
     // </editor-fold> 
     /**
      * Completar
      * @param codigo 
+     * @param laCategoria 
+     * @param laDescripcion 
+     * @throws java.lang.Exception 
      */
-    public void agregarCaracteristicafisica (int codigo) 
+    public void agregarCaracteristicafisica (int codigo,String laCategoria,String laDescripcion) throws Exception 
     {
-        Computador computador = buscarComputador(codigo);
-        if(computador==null)
-        {
-            
-        }
+       Computador computador = buscarComputador(codigo);
+       if(computador != null)
+       {
+            computador.agregarCaraceristicaFisica(codigo, laCategoria,laDescripcion);
+       }
+       else
+       {
+           throw new Exception("No existe un computador registrado con el código: "+ codigo);
+       }
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.00A15B03-6469-5126-9DBA-6A8D48268A81]
     // </editor-fold> 
     /**
      * Completar
      * @param codigo 
+     * @param laCategoria 
+     * @param laDescripcion 
+     * @throws java.lang.Exception 
      */
-    public void ProgramaInstalado (int codigo) 
+    public void agregarProgramaInstalado (int codigo,String laCategoria,String laDescripcion) throws Exception 
     {
-        
+        Computador computador = buscarComputador(codigo);
+       if(computador != null)
+       {
+            computador.agregarProgramaInstalado(codigo, laCategoria,laDescripcion);
+       }
+       else
+       {
+           throw new Exception("No existe un computador registrado con el código: "+ codigo);
+       }
+    }
+    
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.825669A4-16B7-FE16-67BC-251CE446F967]
+    // </editor-fold> 
+    /**
+     * Completar
+     * @param codigo 
+     * @param fecha 
+     * @param encargado 
+     * @param ubicacion 
+     * @throws java.lang.Exception 
+     */
+    public void agregarMantenimiento (int codigo, Date fecha,String encargado, String ubicacion) throws Exception 
+    {
+        Computador computador = buscarComputador(codigo);
+        if(computador!=null){
+                computador.agregarMantenimiento(codigo,fecha, encargado, ubicacion);
+        }
+        else{
+            throw new Exception("No existe un computador registrado con el código: "+ codigo);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -124,17 +157,18 @@ public class SistemaPrincipal {
     // </editor-fold> 
     /**
      * Completar
-     * @param Codigo
+     * @param codigo
      * @return 
      */
-    public Computador buscarComputador (int Codigo)
+    public Computador buscarComputador (int codigo)
     {
-        Computador  computador = null;
+        Computador computador = null;
         boolean encontrado = false;
         
         for(int indice = 0; indice < computadores.size() && !encontrado; indice ++){
-            computador = (Computador) computadores.get(indice);
-            if(computador.getCodigo()==Codigo){
+            
+            if(computadores.get(indice).getCodigo()== codigo){
+                computador = (Computador) computadores.get(indice);
                 encontrado=true;
             }
             

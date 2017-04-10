@@ -1,9 +1,7 @@
 package mantenimientocomputadores.mundo;
 
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
 import java.util.ArrayList; 
 import java.util.Date;
-import javax.swing.table.DefaultTableModel;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.263D1C73-FCF0-D0F0-A4A0-9A5C6025613C]
@@ -74,6 +72,11 @@ public class Computador {
      * Completar
      */
     private ArrayList compatudares;
+    
+    /**
+     * completar
+     */
+    //private CaracteristicaFisica caracteristicaFisica;
 
     //--------------------------------------------------------------------------
     //--------------------------------------------------------------------------
@@ -94,8 +97,16 @@ public class Computador {
         encargado = elEncargado;
         ubicacion = laUbicacion;
         
+        //Inicializar lista de caracteristicas fisicas del computador
+        caracteristicas = new ArrayList<CaracteristicaFisica>();
+        
+         //Inicializar lista de programas instalados del computador
+        programas = new ArrayList<ProgramaInstalado>();
+        
+         //Inicializar lista de mantenimientos del computador
+        mantenimientos = new ArrayList<Mantenimiento>();
+        
     }
-
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.0B6B0203-97FC-C712-F636-9443AA6DAEB6]
     // </editor-fold> 
@@ -188,43 +199,187 @@ public class Computador {
     //Metodos de la clase computador
     //--------------------------------------------------------------------------
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.8EC1A95D-DA74-D579-7E38-70C9580D04B3]
-    // </editor-fold> 
-    /**
-     * Completar
-     * @param laFecha
-     * @param elNombreTecnico
-     * @param laDescripcion 
-     */
-    public void agregarMantenimiento (Date laFecha, String elNombreTecnico, String laDescripcion) {
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.DB22F53A-18FC-EE82-7D9B-89D87B9BEC70]
-    // </editor-fold> 
-    /**
-     * Completar
-     * @param elDescripcion
-     * @param laCategoria 
-     */
-    public void agregarProgramaInstalado (String elDescripcion, String laCategoria) {
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.1A2A7AF0-B787-E8F1-33FE-24B371127921]
     // </editor-fold> 
     /**
      * Completar
+     * @param codigo
      * @param laDescripcion
      * @param laCategoria 
+     * @throws java.lang.Exception 
      */
-    public void agregarCaraceristicaFisica (String laDescripcion, String laCategoria) {
-       
+    public void agregarCaraceristicaFisica (int codigo,String laCategoria,String laDescripcion) throws Exception 
+    {
+        CaracteristicaFisica caracteristica = buscarCaracteristicaPorCategoria(codigo,laCategoria);
+        if(caracteristica == null)
+        {
+            caracteristica = new CaracteristicaFisica(codigo,laCategoria,laDescripcion);
+            caracteristicas.add(caracteristica);
+        }
+        else
+        {
+            throw new Exception("Ya existe esta caracteristica para este computador con código: "+ codigo +"\n"+"Por favor elija la opción 'Modificar'");
+        }
+      
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F27E48F8-E254-9A71-79AB-80C5A3C1CDA7]
     // </editor-fold> 
+    
+    /**
+     * Completar
+     * @param codigo
+     * @return 
+     */
+    public CaracteristicaFisica buscarCaracteristica(int codigo)
+    {
+        CaracteristicaFisica caracteristica = null;
+        boolean encontrado = false;
+        
+        for(int indice = 0; indice < caracteristicas.size() && !encontrado; indice ++){
+            
+            if(caracteristicas.get(indice).getCodigo()==codigo){
+                caracteristica = (CaracteristicaFisica) caracteristicas.get(indice);
+                encontrado=true;
+            }
+            
+        }
+        return caracteristica;
+    }
+    
+    /**
+     * Completar
+     * @param codigo
+     * @param categoria
+     * @return 
+     */
+     public CaracteristicaFisica buscarCaracteristicaPorCategoria(int codigo, String categoria)
+    {
+        CaracteristicaFisica caracteristica = null;
+        boolean encontrado = false;
+        
+        for(int indice = 0; indice < caracteristicas.size() && !encontrado; indice ++){
+            
+            if(caracteristicas.get(indice).getCodigo()==codigo && caracteristicas.get(indice).getCategoria().equals(categoria)){
+                caracteristica = (CaracteristicaFisica) caracteristicas.get(indice);
+                encontrado=true;
+            }
+            
+        }
+        return caracteristica;
+    }
+     
+      // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.DB22F53A-18FC-EE82-7D9B-89D87B9BEC70]
+    // </editor-fold> 
+    /**
+     * Completar
+     * @param codigo
+     * @param laDescripcion
+     * @param laCategoria 
+     * @throws java.lang.Exception 
+     */
+    public void agregarProgramaInstalado (int codigo,String laCategoria, String laDescripcion) throws Exception 
+    {
+        ProgramaInstalado programaInstalado = buscarProgramaPorCategoria(codigo,laCategoria);
+        if(programaInstalado == null)
+        {
+            programaInstalado = new ProgramaInstalado(codigo,laCategoria,laDescripcion);
+            programas.add(programaInstalado);
+        }
+        else
+        {
+            throw new Exception("Ya existe este programa  para este computador con código: "+ codigo +"\n"+"Por favor elija la opción 'Modificar'");
+        }
+    }
+    
+    /**
+     * 
+     * @param codigo
+     * @return 
+     */
+    public ProgramaInstalado buscarPrograma(int codigo){
+        ProgramaInstalado programa = null;
+        boolean encontrado = false;
+        
+        for(int indice = 0; indice < programas.size() && !encontrado; indice ++){
+            
+            if(programas.get(indice).getCodigo()==codigo){
+                programa = (ProgramaInstalado) programas.get(indice);
+                encontrado=true;
+            }
+        }
+        return programa;
+    }
+
+    /**
+     * 
+     * @param codigo
+     * @param categoria
+     * @return 
+     */
+     public ProgramaInstalado buscarProgramaPorCategoria(int codigo, String categoria)
+    {
+        ProgramaInstalado programa = null;
+        boolean encontrado = false;
+        
+        for(int indice = 0; indice < programas.size() && !encontrado; indice ++){
+            
+            if(programas.get(indice).getCodigo()==codigo && programas.get(indice).getCategoria().equals(categoria)){
+                programa = (ProgramaInstalado) programas.get(indice);
+                encontrado=true;
+            }
+            
+        }
+        return programa;
+    }
+     
+     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.8EC1A95D-DA74-D579-7E38-70C9580D04B3]
+    // </editor-fold> 
+    /**
+     * Completar
+     * @param codigo
+     * @param laFecha
+     * @param elNombreTecnico
+     * @param laDescripcion 
+     * @throws java.lang.Exception 
+     */
+    public void agregarMantenimiento (int codigo,Date laFecha, String elNombreTecnico, String laDescripcion) throws Exception
+    {
+        Mantenimiento mantenimiento = buscarMantenimiento(codigo);
+        if(mantenimiento == null)
+        {
+            mantenimiento = new Mantenimiento(codigo,laFecha,elNombreTecnico,laDescripcion);
+            mantenimientos.add(mantenimiento);
+        }
+        else
+        {
+            throw new Exception("Ya existe este mantenimiento  para este computador con código: "+ codigo +"\n"+"Por favor elija la opción 'Modificar'");
+        }
+    }
+
+    /**
+     * 
+     * @param codigo
+     * @return 
+     */
+     public Mantenimiento buscarMantenimiento(int codigo)
+    {
+        Mantenimiento mantenimiento = null;
+        boolean encontrado = false;
+        
+        for(int indice = 0; indice < mantenimientos.size() && !encontrado; indice ++){
+            
+            if(mantenimientos.get(indice).getCodigo()==codigo){
+                mantenimiento = (Mantenimiento) mantenimientos.get(indice);
+                encontrado=true;
+            }
+            
+        }
+        return mantenimiento;
+    }
     /**
      * Completar
      */
@@ -342,5 +497,14 @@ public class Computador {
         this.programas = val;
     }
 
+    /**
+     * Completar
+     * @return 
+     */
+   @Override
+    public String toString() {
+        return ""+codigo;
+    }
+        
 }
 
