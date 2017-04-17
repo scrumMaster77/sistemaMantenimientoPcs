@@ -7,7 +7,10 @@ import java.util.Date;
 // #[regen=yes,id=DCE.263D1C73-FCF0-D0F0-A4A0-9A5C6025613C]
 // </editor-fold> 
 /**
- * Completar
+ * Clase Computador que contiene a las clases:
+ * Características Fisicas.
+ * Programas Instalados.
+ * Mantenimientos.
  * @author Luis Eduardo
  */
 public class Computador {
@@ -16,7 +19,7 @@ public class Computador {
     // #[regen=yes,id=DCE.F56FB90D-6C3F-AC89-CCBC-963864E49768]
     // </editor-fold> 
     /**
-     * Completar
+     * Codigo: El código del computador 
      */
     private int codigo;
 
@@ -24,7 +27,7 @@ public class Computador {
     // #[regen=yes,id=DCE.26C3E05D-D6E4-0060-BA4A-C55979A1C8B5]
     // </editor-fold> 
     /**
-     * Completar
+     * precio: El precio del computador 
      */
     private double precio;
 
@@ -32,7 +35,7 @@ public class Computador {
     // #[regen=yes,id=DCE.AE32D37C-014C-4175-A4A4-222DD5AEF3A9]
     // </editor-fold> 
     /**
-     * Completar
+     * encargado: El encargado del computador 
      */
     private String encargado;
 
@@ -40,7 +43,7 @@ public class Computador {
     // #[regen=yes,id=DCE.D8049699-3DC1-9B26-E31C-9FB25A6289EA]
     // </editor-fold> 
     /**
-     * Completar
+     * ubicación : La ubicación donde se encuentra el computador
      */
     private String ubicacion;
   
@@ -48,7 +51,8 @@ public class Computador {
     // #[regen=yes,id=DCE.084C142F-2373-0860-8774-7D7BD1AAB2D0]
     // </editor-fold> 
     /**
-     * Completar
+     * Arraylist de la clase CaracteristicaFisica que contiene todas las características
+     * del computador.
      */
     private ArrayList<CaracteristicaFisica> caracteristicas;
 
@@ -56,7 +60,8 @@ public class Computador {
     // #[regen=yes,id=DCE.D3EB4F04-246A-9999-A6E7-B70BD891B5AB]
     // </editor-fold> 
     /**
-     * Completar
+     *  Arraylist de la clase ProgramaInstalado que contiene todos los programas instalados
+     * del computador.
      */
     private ArrayList<ProgramaInstalado> programas;
 
@@ -64,31 +69,28 @@ public class Computador {
     // #[regen=yes,id=DCE.DAE9DE82-2809-BFBC-ECEF-8A5BDBA3BFD1]
     // </editor-fold> 
     /**
-     * Completar
-     */
+     * ArrayList de la clase Mantenimiento que contiene todos los mantenimientos de un 
+     * computador.
+      */
     private ArrayList<Mantenimiento> mantenimientos;
     
     /**
-     * Completar
+     * ArrayList de la clase Computador que contiene todos los computadores.
      */
     private ArrayList compatudares;
     
-    /**
-     * completar
-     */
-    //private CaracteristicaFisica caracteristicaFisica;
-
     //--------------------------------------------------------------------------
     //--------------------------------------------------------------------------
+    //---Constructor de la clase Computador
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F75894AC-2DE3-9207-A609-6D88250B1A7D]
     // </editor-fold> 
     /**
      * Completar
-     * @param elCodigo
-     * @param elPrecio
-     * @param elEncargado
-     * @param laUbicacion 
+     * @param elCodigo: Código para agregar un computador que se pasa como parámetro.
+     * @param elPrecio: Precio del computador que se pasa como parámetro.
+     * @param elEncargado: Encargado del computador que se pasa como parámetro.
+     * @param laUbicacion : Ubicación donde se encuentra el computador y que se pasa como parámetro.
      */
     public Computador (int elCodigo, int elPrecio, String elEncargado, String laUbicacion) 
     {
@@ -97,7 +99,7 @@ public class Computador {
         encargado = elEncargado;
         ubicacion = laUbicacion;
         
-        //Inicializar lista de caracteristicas fisicas del computador
+        //Inicializar lista de características fisicas del computador
         caracteristicas = new ArrayList<CaracteristicaFisica>();
         
          //Inicializar lista de programas instalados del computador
@@ -111,8 +113,8 @@ public class Computador {
     // #[regen=yes,regenBody=yes,id=DCE.0B6B0203-97FC-C712-F636-9443AA6DAEB6]
     // </editor-fold> 
     /**
-     * Completar
-     * @return 
+     * Método encargado de obtener el código de un computador. 
+     * @return : retorna el código del computador.
      */
     public int getCodigo () {
         return codigo;
@@ -122,41 +124,20 @@ public class Computador {
     // #[regen=yes,regenBody=yes,id=DCE.49397215-B14D-D37B-61A9-DD57A947335E]
     // </editor-fold> 
     /**
-     * Completar
-     * @param val 
+     * Método encargado de dar el código de un computador. 
+     * @param val: valor del código de un computador que se pasa como parámetro.
      */
     public void setCodigo (int val) {
         this.codigo = val;
     }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.355B37CE-8CC8-40BD-B976-B5A27ECEC1D8]
-    // </editor-fold> 
-    /**
-     * Completar
-     * @return 
-     */
-    public String getEncargado () {
-        return encargado;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.E53CC9D3-049D-F5D4-3434-97DE7E2B1E7E]
-    // </editor-fold> 
-    /**
-     * Completar
-     * @param val 
-     */
-    public void setEncargado (String val) {
-        this.encargado = val;
-    }
-
+    
+    
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.96DDB507-752F-4CB6-D300-4667633CD38A]
     // </editor-fold> 
     /**
-     * Completar
-     * @return 
+     * Método encargado de obtener el precio de un computador
+     * @return : Retorna el precio de un computador
      */
     public double getPrecio () {
         return precio;
@@ -166,19 +147,40 @@ public class Computador {
     // #[regen=yes,regenBody=yes,id=DCE.25DB6D6D-3D5B-4236-E620-E8485B3824F0]
     // </editor-fold> 
     /**
-     * Completar
-     * @param val 
+     * Método encargado de dar el precio de un computador 
+     * @param val : Valor tipo double de un computador 
      */
     public void setPrecio (double val) {
         this.precio = val;
     }
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,regenBody=yes,id=DCE.355B37CE-8CC8-40BD-B976-B5A27ECEC1D8]
+    // </editor-fold> 
+    /**
+     * Método encargado de obtener el encargado de un computador o responsable de un 
+     * computador.
+     * @return: Retorna el encargado de un computador.
+     */
+    public String getEncargado () {
+        return encargado;
+    }
 
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,regenBody=yes,id=DCE.E53CC9D3-049D-F5D4-3434-97DE7E2B1E7E]
+    // </editor-fold> 
+    /**
+     * Método encargado de dar el encargado de un computador. 
+     * @param val : valor del encargado de un computador.
+     */
+    public void setEncargado (String val) {
+        this.encargado = val;
+    }
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.F2088934-B14C-E4F6-2103-F4E0DE77741E]
     // </editor-fold> 
     /**
-     * Completar
-     * @return 
+     * Método encargado de obtener la ubicación de un computador.
+     * @return : Retorna la ubicación de un computador.
      */
     public String getUbicacion () {
         return ubicacion;
@@ -188,8 +190,8 @@ public class Computador {
     // #[regen=yes,regenBody=yes,id=DCE.380635A7-6182-845A-4AFA-79FA010C461C]
     // </editor-fold> 
     /**
-     * Completar    
-     * @param val 
+     * Metodo encargado de dar la ubicación de un computador.
+     * @param val : valor de la ubicación de un computador.
      */
     public void setUbicacion (String val) {
         this.ubicacion = val;
@@ -202,11 +204,13 @@ public class Computador {
     // #[regen=yes,id=DCE.1A2A7AF0-B787-E8F1-33FE-24B371127921]
     // </editor-fold> 
     /**
-     * Completar
-     * @param codigo
-     * @param laDescripcion
-     * @param laCategoria 
-     * @throws java.lang.Exception 
+     * Método encargado de agregar una característica fisica a un computador que ya existe.
+     * Se debe buscar una característica por el código y la categoria para agregarle una característica fisica
+     * @param codigo: El código de un computador para agregar una característica fisica
+     * @param laCategoria: La categoria de la característica ejemplo: RAM, CPU, Disco duro.... etc.
+     * @param laDescripcion: La descripción de la característica fisica: ejemplo: 2GB, 500 GB....etc.
+     * @throws java.lang.Exception: característica == null: si la característica esta vacia se agrega la característica
+     * de lo contrario lanza una excepción "Ya existe esta característica".
      */
     public void agregarCaraceristicaFisica (int codigo,String laCategoria,String laDescripcion) throws Exception 
     {
@@ -228,9 +232,9 @@ public class Computador {
     // </editor-fold> 
     
     /**
-     * Completar
-     * @param codigo
-     * @return 
+     * Busca una característica fisica de un computador por el código que se pasa como parámetro
+     * @param codigo: el código de la característica fisica.
+     * @return caracaterística: Retorna la característica de un computador.
      */
     public CaracteristicaFisica buscarCaracteristica(int codigo)
     {
@@ -249,10 +253,10 @@ public class Computador {
     }
     
     /**
-     * Completar
-     * @param codigo
-     * @param categoria
-     * @return 
+     * Busca una característica fisica por código y categoria que se pasan como parámetros.
+     * @param codigo: el código de la característica fisica.
+     * @param categoria: la categoria de la característica fisica de un computador.
+     * @return Retorna la caracteristica buscada.
      */
      public CaracteristicaFisica buscarCaracteristicaPorCategoria(int codigo, String categoria)
     {
@@ -274,11 +278,13 @@ public class Computador {
     // #[regen=yes,id=DCE.DB22F53A-18FC-EE82-7D9B-89D87B9BEC70]
     // </editor-fold> 
     /**
-     * Completar
-     * @param codigo
-     * @param laDescripcion
-     * @param laCategoria 
-     * @throws java.lang.Exception 
+     * Agregar un programa instalado a un computador que ya existe con el código, la categoria y una descripción que se pasan 
+     * como párametros.
+     * @param codigo: el código del computador al cual se le va a agregar el programa instalado. 
+     * @param laCategoria: la categoria del programa instalado que se va a agregar.
+     * @param laDescripcion: la descripción del programa instalado que se va a agregar.
+     * @throws java.lang.Exception : Excepción: si el computador buscado por código y categoria ya tiene un programa instalado, se
+     * lanza una excepción informando sobre el error.
      */
     public void agregarProgramaInstalado (int codigo,String laCategoria, String laDescripcion) throws Exception 
     {
@@ -295,9 +301,9 @@ public class Computador {
     }
     
     /**
-     * 
-     * @param codigo
-     * @return 
+     * Busca un programa por el código que se pasa como párametro
+     * @param codigo: el código del programa instalado 
+     * @return : Retorna el program buscado. 
      */
     public ProgramaInstalado buscarPrograma(int codigo){
         ProgramaInstalado programa = null;
@@ -314,10 +320,10 @@ public class Computador {
     }
 
     /**
-     * 
-     * @param codigo
-     * @param categoria
-     * @return 
+     * Busca un programa instalado por código y categoria que se pasan como párametros.
+     * @param codigo: El código del programa a buscar.
+     * @param categoria: La categoria del programa a buscar.
+     * @return : Retorna el programa buscado con los párametros.
      */
      public ProgramaInstalado buscarProgramaPorCategoria(int codigo, String categoria)
     {
@@ -339,14 +345,17 @@ public class Computador {
     // #[regen=yes,id=DCE.8EC1A95D-DA74-D579-7E38-70C9580D04B3]
     // </editor-fold> 
     /**
-     * Completar
-     * @param codigo
-     * @param laFecha
-     * @param elNombreTecnico
-     * @param laDescripcion 
-     * @throws java.lang.Exception 
+     * Agrega un mantenimiento a un computador con el código, la fecha, el nombre del técnico y una descripción que se pasan
+     * como párametros.
+     * @param codigo: El código  del computador al cual se va a agregar un mantenimiento.
+     * @param laFecha: La fecha la cual se ha hecho el mantenimiento. la Fecha debe ser menor o igual a la fecha actual a la
+     * que se hace el mantenimiento.
+     * @param elNombreTecnico: El nombre del técnico quien hace el mantenimiento a un computador.
+     * @param laDescripcion : La descripción del mantenimiento que hace el técnico a un computador.
+     * @throws java.lang.Exception :Excepción. Si el computador buscado por el código ya tiene un mantenimiento agregado se debe 
+     * enviar una excepción informando del error.
      */
-    public void agregarMantenimiento (int codigo,Date laFecha, String elNombreTecnico, String laDescripcion) throws Exception
+    public void agregarMantenimiento(int codigo,Date laFecha, String elNombreTecnico, String laDescripcion) throws Exception
     {
         Mantenimiento mantenimiento = buscarMantenimiento(codigo);
         if(mantenimiento == null)
@@ -361,9 +370,9 @@ public class Computador {
     }
 
     /**
-     * 
-     * @param codigo
-     * @return 
+     * Busca un mantenimiento por el código  que se pasa como párametro.
+     * @param codigo: El código del mantenimiento que se va a buscar.
+     * @return : Retorna el mantenimiento de un computador.
      */
      public Mantenimiento buscarMantenimiento(int codigo)
     {
@@ -435,8 +444,8 @@ public class Computador {
     // #[regen=yes,regenBody=yes,id=DCE.45F00FEF-3E4F-8486-E9EF-77DCF2B31361]
     // </editor-fold> 
     /**
-     * Completar
-     * @return 
+     * Método encargado de retornar un ArrayList con las caracteristicas fisicas de un computador
+     * @return :Retorna un ArrayList de tipo caracteristicas.
      */
     public ArrayList<CaracteristicaFisica> getCaracteristicas () {
         return caracteristicas;
@@ -446,8 +455,8 @@ public class Computador {
     // #[regen=yes,regenBody=yes,id=DCE.966F1E5B-A572-61A7-CFF5-3EDB4E22ACA8]
     // </editor-fold> 
     /**
-     * Completar
-     * @param val 
+     * Método encargado de dar las caracteristicas fisicas de un computador.
+     * @param val Valor de las caracteristicas que se pasa como párametros.
      */
     public void setCaracteristicas (ArrayList<CaracteristicaFisica> val) {
         this.caracteristicas = val;
@@ -457,8 +466,8 @@ public class Computador {
     // #[regen=yes,regenBody=yes,id=DCE.64F264DA-7BAD-658D-ACFD-FDF35A2E5D89]
     // </editor-fold> 
     /**
-     * Completar
-     * @return 
+     * Método encargado de retornar un ArrayList con los mantenimientos de un computador.
+     * @return : Retorna un ArrayList de tipo mantenimientos.
      */
     public ArrayList<Mantenimiento> getMantenimientos () {
         return mantenimientos;
@@ -468,8 +477,8 @@ public class Computador {
     // #[regen=yes,regenBody=yes,id=DCE.05831DE9-B9C4-6F1B-A99B-F2261AF961DC]
     // </editor-fold> 
     /**
-     * Completar
-     * @param val 
+     * Método encargado de dar un ArrayList con los mantenimientos de un computador.
+     * @param val: Valor del mantenimiento que se pasa como párametros.
      */
     public void setMantenimientos (ArrayList<Mantenimiento> val) {
         this.mantenimientos = val;
@@ -479,8 +488,8 @@ public class Computador {
     // #[regen=yes,regenBody=yes,id=DCE.6A8823D2-2E52-199C-C7DC-0ADBFF6300E2]
     // </editor-fold> 
     /**
-     * Completar
-     * @return 
+     * Método encargado de retornar un ArrayList con los programas instalados a un computador.
+     * @return : Retorna un ArrayList con los programas instalados a un computador.
      */
     public ArrayList<ProgramaInstalado> getProgramas () {
         return programas;
@@ -490,16 +499,20 @@ public class Computador {
     // #[regen=yes,regenBody=yes,id=DCE.FA1B595A-852A-36A6-2F6D-5F9C8A953EC0]
     // </editor-fold> 
     /**
-     * Completar
-     * @param val 
+     * Método encargado de dar un ArrayList con los programas instalados a un computador.
+     * @param val : Valor del programa instalado que se pasa como párametro.
      */
     public void setProgramas (ArrayList<ProgramaInstalado> val) {
         this.programas = val;
     }
 
     /**
-     * Completar
-     * @return 
+     * Método encargado de retornar el código convertido a string para 
+     * agregarlo al combo computadores que se encuentran en las:
+     * Caracteristicas fisicas
+     * Programas instalados
+     * Mantenimientos.
+     * @return : Retorna el código del computador.
      */
    @Override
     public String toString() {

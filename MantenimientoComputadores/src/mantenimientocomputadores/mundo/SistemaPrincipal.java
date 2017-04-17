@@ -177,39 +177,61 @@ public class SistemaPrincipal {
        
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.C51CCA64-7CED-4CF0-748C-506EC20C409B]
-    // </editor-fold> 
+    
     /**
      * Completar
      * @param codigo
-     * @param Unnamed 
+     * @param nuevo
+     * @throws java.lang.Exception
      */
-    public void modificarMantenimiento (int codigo, Mantenimiento Unnamed) {
+    public void modificarComputador(int codigo, Computador nuevo) throws Exception 
+    {
+        Computador miComputador = buscarComputador(codigo);
+        if(miComputador != null)
+        {
+            nuevo.getCodigo();
+            nuevo.getPrecio();
+            nuevo.getEncargado();
+            nuevo.getUbicacion();
+            computadores.add(nuevo);
+          
+        }
+        else
+        {
+            throw new Exception("No se pudo modificar el computador, verifique la información");
+        }
     }
-
+   
+    /**
+     * Completar
+     * @param codigo
+     * @param nueva
+     */
+    public void modificarCaracteristicaFisica (int codigo, CaracteristicaFisica nueva) {
+    }
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.D0919868-180E-67BC-3D6F-1CDD29A49A4B]
     // </editor-fold> 
     /**
      * Completar
      * @param codigo
-     * @param Unnamed 
+     * @param nuevo
      */
-    public void modificarProgramaInstalado (int codigo, ProgramaInstalado Unnamed) {
+    public void modificarProgramaInstalado (int codigo, ProgramaInstalado nuevo) {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.C4888692-4CF9-CC10-A99E-B5C426CC73DA]
+    // #[regen=yes,id=DCE.C51CCA64-7CED-4CF0-748C-506EC20C409B]
     // </editor-fold> 
     /**
      * Completar
      * @param codigo
-     * @param Unnamed 
+     * @param nuevo
      */
-    public void modificarCaracteristicaFisica (int codigo, CaracteristicaFisica Unnamed) {
+    public void modificarMantenimiento (int codigo, Mantenimiento nuevo) 
+    {
+        
     }
-
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.0350EAC8-67ED-D899-8A83-D39DB3CEC514]
     // </editor-fold> 
@@ -259,7 +281,7 @@ public class SistemaPrincipal {
      * @return 
      */
     public ArrayList darComputador () {
-        return null;
+        return computadores;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -280,7 +302,7 @@ public class SistemaPrincipal {
      * Completar
      * @return 
      */
-    public ArrayList ComputadoresMasMantenimiento () {
+    public ArrayList darComputadoresMasMantenimiento () {
         return null;
     }
 

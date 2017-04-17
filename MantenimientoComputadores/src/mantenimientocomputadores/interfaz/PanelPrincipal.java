@@ -5,7 +5,6 @@
  */
 package mantenimientocomputadores.interfaz;
 
-import com.toedter.calendar.JCalendar;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,6 +29,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
      * Completar
      */
     private Computador computador;
+    
     
     private PanelPrincipal panelPrincipal;
     
@@ -258,6 +258,11 @@ public class PanelPrincipal extends javax.swing.JPanel {
         });
 
         btn_ModificarComputador.setText("Modificar");
+        btn_ModificarComputador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ModificarComputadorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -928,6 +933,11 @@ public class PanelPrincipal extends javax.swing.JPanel {
         jTabbedPane6.setSelectedIndex(0);
     }//GEN-LAST:event_btn_CancelarMantenimientoActionPerformed
 
+    private void btn_ModificarComputadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarComputadorActionPerformed
+        // TODO add your handling code here:
+        modificarComputador();
+    }//GEN-LAST:event_btn_ModificarComputadorActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_AgregarComputador;
@@ -1002,7 +1012,8 @@ public class PanelPrincipal extends javax.swing.JPanel {
     // Metodos del panel principal de la interfaz
     //--------------------------------------------------------------------------
     /**
-     * Completar
+     * Método encargado de agregar un computador al sistema de mantenimientos.
+     * 
      */
     public void agregarComputador() {
 
@@ -1102,17 +1113,15 @@ public class PanelPrincipal extends javax.swing.JPanel {
 
     /**
      * Completar
-     * @throws ParseException
      * @throws Exception 
      */
     private void agregarMantenimiento() throws Exception
     {
-        
-        //Mantenimiento mantenimientos= new Mantenimiento(Integer.parseInt(comboComputadoresMantenimiento.getSelectedItem().toString()), comboFecha.getDate(), txtEncargado.getText(), txtDescripcion.getText());
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date fechaActual = new Date();
         String dateInString = "";
         boolean fechaValidada = false;
+     
         if(comboFecha.getDate() != null)
         {
             dateInString = formatter.format(comboFecha.getDate());
@@ -1133,10 +1142,10 @@ public class PanelPrincipal extends javax.swing.JPanel {
            mantenimiento[0] = "";
         }
         
-        mantenimiento[1]= dateInString;
-        mantenimiento[2]= txtEncargado.getText();
+        mantenimiento[1] = dateInString;
+        mantenimiento[2] = txtEncargado.getText();
         txtEncargado.setText("");
-        mantenimiento[3]= txtDescripcion.getText();
+        mantenimiento[3] = txtDescripcion.getText();
         txtDescripcion.setText("");
         if(mantenimiento[0].equals("")|| mantenimiento[1].equals("") || mantenimiento[2].equals("")|| mantenimiento[3].equals(""))
         {
@@ -1154,6 +1163,38 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Mantenimiento registrado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
         }
+    }
+    
+    /**
+     * Completar
+     */
+    private void modificarComputador()
+    {
+        String codigo = JOptionPane.showInputDialog( this, "Código:", "Búsqueda computadores", JOptionPane.QUESTION_MESSAGE );
+        
+        try
+       {
+        if(codigo != null)
+          { 
+            int cod = Integer.parseInt(codigo);
+            Computador miComputador = sistemaPrincipal.buscarComputador(cod);
+           
+            if(miComputador != null)
+            {
+                mostrarComputador(miComputador);
+                JOptionPane.showMessageDialog(this,"El computador " +codigo+ " se ha encontrado con éxito");
+            }
+            else
+          {
+               JOptionPane.showMessageDialog( this, "El código del computador no esta registrado", "Búsqueda computadores", JOptionPane.ERROR_MESSAGE );      
+          }
+        }
+       }  
+       catch(NumberFormatException e)
+         {
+             JOptionPane.showMessageDialog( this, "El código del computador debe ser un valor numérico ó esta vacio", "Búsqueda computadores", JOptionPane.ERROR_MESSAGE );      
+         }
+      
     }
     /**
      * Completar
@@ -1201,5 +1242,24 @@ public class PanelPrincipal extends javax.swing.JPanel {
         comboCategoriaPrograma.addItem(programa.getANTIVIRUS());
         comboCategoriaPrograma.addItem(programa.getLENGUAJE_PROGRAMACION());
         comboCategoriaPrograma.addItem(programa.getIDE());
+    }
+
+    private void mostrarComputador(Computador miComputador) 
+    {
+        sistemaPrincipal.darComputador();
+    }
+    public void cargarListaMan(String valores)
+    {
+        int fila = tablaMantenimiento.getRowCount();
+        int i;
+        for (i = 0; i < fila; i++) {
+            String valor = (String) tablaMantenimiento.getValueAt(i, 1);
+            valores += valor;
+            // Con esta condición solo ponemos comas hasta el penúltimo valor 🙂
+            if (i < (fila - 1)) {
+                valores += ", ";
+            }
+        }
+       
     }
 }

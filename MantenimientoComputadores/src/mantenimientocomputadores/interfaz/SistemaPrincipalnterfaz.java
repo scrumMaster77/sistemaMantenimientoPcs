@@ -132,17 +132,17 @@ public class SistemaPrincipalnterfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Completar
+     * Boton encargado de agregar un computador al sistema de mantenimientos.
      * @param evt 
      */
     private void btnAgregarComputadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarComputadorActionPerformed
         // TODO add your handling code here:
-        DialogoPanelPrincipal p = new DialogoPanelPrincipal(new javax.swing.JFrame(),true);
+        DialogoPanelPrincipal p = new DialogoPanelPrincipal(new javax.swing.JFrame(),false);
         p.setVisible(true);
     }//GEN-LAST:event_btnAgregarComputadorActionPerformed
 
     /**
-     * Completar
+     * Boton encargado de salir del sistema principal de mantenimientos.
      * @param evt 
      */
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -151,7 +151,7 @@ public class SistemaPrincipalnterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
-     * Completar
+     * Boton encargado de mostrar las estadísticas del sistema de mantenimientos de computadores.
      * @param evt 
      */
     private void btnEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasActionPerformed
