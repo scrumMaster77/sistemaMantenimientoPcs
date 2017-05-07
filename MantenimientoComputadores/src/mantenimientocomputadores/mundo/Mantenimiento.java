@@ -116,7 +116,8 @@ public class Mantenimiento {
      * Completar
      * @return 
      */
-    public Date getFecha () {
+    public Date getFecha () 
+    {
         return fecha;
     }
 

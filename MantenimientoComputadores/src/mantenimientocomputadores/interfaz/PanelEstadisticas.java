@@ -5,10 +5,12 @@
  */
 package mantenimientocomputadores.interfaz;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import mantenimientocomputadores.mundo.Computador;
 import mantenimientocomputadores.mundo.Mantenimiento;
+import mantenimientocomputadores.mundo.SistemaPrincipal;
 
 /**
  *
@@ -17,16 +19,17 @@ import mantenimientocomputadores.mundo.Mantenimiento;
 public class PanelEstadisticas extends javax.swing.JPanel {
 
     private PanelPrincipal panelPrincipal;
-    private SistemaPrincipalnterfaz principalPanelEst;
     private Computador computador;
+    private SistemaPrincipal sistemaPrincipal;
     private Mantenimiento mantenimiento;
     /**
      * Creates new form PanelEstadisticas
      */
     public PanelEstadisticas() {
-        initComponents();
         panelPrincipal = new PanelPrincipal();
-        mostrarMantenimientosAnio();
+        initComponents();
+        cargarListaMantemientos();
+        
     }
 
     /**
@@ -239,7 +242,7 @@ public class PanelEstadisticas extends javax.swing.JPanel {
      */
     private void btnMostrarMantenimientosAnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarMantenimientosAnioActionPerformed
         // TODO add your handling code here:
-        mostrarMantenimientosAnio();
+        
     }//GEN-LAST:event_btnMostrarMantenimientosAnioActionPerformed
 
 
@@ -261,10 +264,28 @@ public class PanelEstadisticas extends javax.swing.JPanel {
     private java.awt.Label lblResultado;
     // End of variables declaration//GEN-END:variables
 
-    private void mostrarMantenimientosAnio() 
+   public void cargarListaMantemientos()
     {
-      
-       //comboAnios.addItem(panelPrincipal.cargarListaMan(valores));
+        ArrayList computadores  = new ArrayList<Computador>();
+        SistemaPrincipal sisprin = panelPrincipal.darObjeto();
+        computadores = sisprin.getComputadores();
+        comboAnios.removeAllItems();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+        String dateInString = "";
+        for (int i = 0; i < computadores.size(); i++) 
+        {
+            ArrayList mantenimientos = new ArrayList<Mantenimiento>();
+            Computador com = (Computador)computadores.get(i);
+            mantenimientos = com.getMantenimientos();
+            for(int j = 0 ; j < mantenimientos.size(); j ++)
+            {
+                  Mantenimiento mant = (Mantenimiento)mantenimientos.get(j);
+                  dateInString = formatter.format(mant.getFecha());
+                  comboAnios.addItem(dateInString);
+            }
+           
+             
+        }
     }
 }
 

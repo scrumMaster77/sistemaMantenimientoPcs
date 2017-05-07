@@ -5,17 +5,17 @@
  */
 package mantenimientocomputadores.interfaz;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import mantenimientocomputadores.mundo.CaracteristicaFisica;
 import mantenimientocomputadores.mundo.Computador;
-import mantenimientocomputadores.mundo.Mantenimiento;
 import mantenimientocomputadores.mundo.ProgramaInstalado;
 import mantenimientocomputadores.mundo.SistemaPrincipal;
 
@@ -31,38 +31,52 @@ public class PanelPrincipal extends javax.swing.JPanel {
     private Computador computador;
     
     
-    private PanelPrincipal panelPrincipal;
+    private static PanelPrincipal panelPrincipal;
+    
+    private PanelEstadisticas panelEstadisticas;
     
     private DialogoPanelPrincipal dialogoPrincipal;
+    
     /**
-     * Completar
+     * Barra de desplazamiento
      */
-    private SistemaPrincipalnterfaz principal;
+    private JScrollPane desplazamientoPanel;
     
     /**
      * Completar
      */
-    DefaultTableModel tablaPc;
+    private SistemaPrincipalInterfaz principal;
     
     /**
      * Completar
      */
-    DefaultTableModel tablaCaracteristicaFisica;
+    private TablaComputadores tablaPc;
+    //private DefaultTableModel tablaPc;
+    
+    /**
+     * 
+     */
+    private  JTable tablacomputador;
+       
+    /**
+     * Completar
+     */
+    private DefaultTableModel tablaCaracteristicaFisica;
     
     /**
      * Completar
      */
-    DefaultTableModel tablaPrograma;
+    private DefaultTableModel tablaPrograma;
     
     /**
      * Completar
      */
-    DefaultTableModel tablaMantenimiento; 
+    private DefaultTableModel tablaMantenimiento; 
     
     /**
      * Completar
      */
-    private SistemaPrincipal sistemaPrincipal;
+    private static SistemaPrincipal sistemaPrincipal;
     
     //--------------------------------------------------------------------------
     //--------------------------------------------------------------------------
@@ -71,25 +85,23 @@ public class PanelPrincipal extends javax.swing.JPanel {
      */
     public PanelPrincipal() {
         
-        sistemaPrincipal = new SistemaPrincipal();
+        //sistemaPrincipal = new SistemaPrincipal();
+        
         initComponents();
+        darObjeto();
        //Cargar el combo de computadores para las caracteristicas
         cargarListaComputadores();
-        
+            
         //Cargar el combo de caracteristicas
         cargarListaCategoriasCaracteristicas();
         
          //Cargar el combo de programas
         cargarListaCategoriasProgramas();
         
-        //Creación de la tabla  computadores 
-        tablaPc = new DefaultTableModel();
-        tablaPc.addColumn("Código");
-        tablaPc.addColumn("Precio");
-        tablaPc.addColumn("Encargado");
-        tablaPc.addColumn("Ubicación");
-        this.tablaComputadores.setModel(tablaPc);
-        
+        tablaPc = new TablaComputadores(sistemaPrincipal);
+        tablaEquipos.setModel(tablaPc);
+        actualizarTablaComputadores();
+	        
         //Creación de la tabla caracterisiticas
         tablaCaracteristicaFisica = new DefaultTableModel();
         tablaCaracteristicaFisica.addColumn("Código Pc");
@@ -137,9 +149,10 @@ public class PanelPrincipal extends javax.swing.JPanel {
         lbl_ubicacion = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btn_AgregarComputador = new javax.swing.JButton();
-        btn_ModificarComputador = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaComputadores = new javax.swing.JTable();
+        btn_buscar = new javax.swing.JButton();
+        btn_modificar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaEquipos = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -257,10 +270,17 @@ public class PanelPrincipal extends javax.swing.JPanel {
             }
         });
 
-        btn_ModificarComputador.setText("Modificar");
-        btn_ModificarComputador.addActionListener(new java.awt.event.ActionListener() {
+        btn_buscar.setText("Buscar");
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ModificarComputadorActionPerformed(evt);
+                btn_buscarActionPerformed(evt);
+            }
+        });
+
+        btn_modificar.setText("Modificar");
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
             }
         });
 
@@ -268,12 +288,14 @@ public class PanelPrincipal extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(btn_AgregarComputador)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(btn_ModificarComputador)
-                .addGap(22, 22, 22))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,27 +303,24 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_AgregarComputador)
-                    .addComponent(btn_ModificarComputador))
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(btn_buscar))
+                .addGap(18, 18, 18)
+                .addComponent(btn_modificar)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        tablaComputadores.setModel(new javax.swing.table.DefaultTableModel(
+        tablaEquipos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Código", "Precio", "Encargado", "Ubicación"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
-        jScrollPane1.setViewportView(tablaComputadores);
+        ));
+        jScrollPane2.setViewportView(tablaEquipos);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -312,21 +331,21 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         jTabbedPane6.addTab("Computador", jPanel4);
@@ -867,8 +886,8 @@ public class PanelPrincipal extends javax.swing.JPanel {
      */
     private void btn_AgregarComputadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarComputadorActionPerformed
         // TODO add your handling code here:
-
-        agregarComputador();
+       
+            agregarComputador();
         
     }//GEN-LAST:event_btn_AgregarComputadorActionPerformed
 
@@ -922,7 +941,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
         try {
             // TODO add your handling code here:
             agregarMantenimiento();
-        } catch (Exception ex) {
+            } catch (Exception ex) {
             Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Error: "+ ex, "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -933,10 +952,17 @@ public class PanelPrincipal extends javax.swing.JPanel {
         jTabbedPane6.setSelectedIndex(0);
     }//GEN-LAST:event_btn_CancelarMantenimientoActionPerformed
 
-    private void btn_ModificarComputadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarComputadorActionPerformed
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         // TODO add your handling code here:
+        txtCodigo.setEditable(false);
+        buscarComputador();
+    }//GEN-LAST:event_btn_buscarActionPerformed
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        // TODO add your handling code here:
+        txtCodigo.setEditable(true);
         modificarComputador();
-    }//GEN-LAST:event_btn_ModificarComputadorActionPerformed
+    }//GEN-LAST:event_btn_modificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -945,14 +971,15 @@ public class PanelPrincipal extends javax.swing.JPanel {
     private javax.swing.JButton btn_CancelarMantenimiento;
     private javax.swing.JButton btn_EliminarMantenimiento;
     private javax.swing.JButton btn_ModificarCaracteristica;
-    private javax.swing.JButton btn_ModificarComputador;
     private javax.swing.JButton btn_ModificarMantenimiento;
     private javax.swing.JButton btn_agregarCaracteristica;
     private javax.swing.JButton btn_agregarPrograma;
+    private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_cancelarPrograma;
     private javax.swing.JButton btn_eliminarCaracteristica;
     private javax.swing.JButton btn_eliminarPrograma;
+    private javax.swing.JButton btn_modificar;
     private javax.swing.JButton btn_modificarPrograma;
     private javax.swing.JComboBox<String> comboCategoriaCaracteristica;
     private javax.swing.JComboBox<String> comboCategoriaPrograma;
@@ -984,7 +1011,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
@@ -995,7 +1022,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_precio;
     private javax.swing.JLabel lbl_ubicacion;
     private javax.swing.JTable tablaCaracteristicas;
-    private javax.swing.JTable tablaComputadores;
+    private javax.swing.JTable tablaEquipos;
     private javax.swing.JTable tablaMantenimientos;
     private javax.swing.JTable tablaProgramas;
     private javax.swing.JTextField txtCodigo;
@@ -1026,17 +1053,26 @@ public class PanelPrincipal extends javax.swing.JPanel {
         txtEncargadoPC.setText(null);
         datos[3] = txtUbicacion.getText();
         txtUbicacion.setText(null);
+       
+        
 
         try {
             if (datos[0].equals("") || datos[1].equals("") || datos[2].equals("") || datos[3].equals("")) {
                 JOptionPane.showMessageDialog(this, "Todos los datos son requeridos", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                sistemaPrincipal.agregarComputador(Integer.parseInt(datos[0]), Integer.parseInt(datos[1]), datos[2], datos[3]);
-                tablaPc.addRow(datos);
+                 int precio = Integer.parseInt(datos[1]);
+                 
+                sistemaPrincipal.agregarComputador(Integer.parseInt(datos[0]), precio, datos[2], datos[3]);
+                actualizarTablaComputadores();
                 cargarListaComputadores();
                 JOptionPane.showMessageDialog(this, "Computador registrado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            
             }
 
+        } catch (NumberFormatException nfd)
+        {
+            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, nfd);
+            JOptionPane.showMessageDialog(this, "El precio es un valor numérico", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -1168,7 +1204,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
     /**
      * Completar
      */
-    private void modificarComputador()
+    private void buscarComputador()
     {
         String codigo = JOptionPane.showInputDialog( this, "Código:", "Búsqueda computadores", JOptionPane.QUESTION_MESSAGE );
         
@@ -1181,8 +1217,11 @@ public class PanelPrincipal extends javax.swing.JPanel {
            
             if(miComputador != null)
             {
-                mostrarComputador(miComputador);
                 JOptionPane.showMessageDialog(this,"El computador " +codigo+ " se ha encontrado con éxito");
+                txtCodigo.setText(codigo);
+                txtPrecio.setText(Integer.toString((int) miComputador.getPrecio()));
+                txtEncargadoPC.setText(miComputador.getEncargado());
+                txtUbicacion.setText(miComputador.getUbicacion());
             }
             else
           {
@@ -1196,6 +1235,40 @@ public class PanelPrincipal extends javax.swing.JPanel {
          }
       
     }
+    
+    /**
+     * Modificar computador
+     */
+    public void modificarComputador()
+    {
+        String[] datos = new String[4];
+        datos[0] = txtCodigo.getText();
+        txtCodigo.setText(null);
+        datos[1] = txtPrecio.getText();
+        txtPrecio.setText(null);
+        datos[2] = txtEncargadoPC.getText();
+        txtEncargadoPC.setText(null);
+        datos[3] = txtUbicacion.getText();
+        txtUbicacion.setText(null);
+
+        try {
+            if (datos[1].equals("") || datos[2].equals("") || datos[3].equals("")) {
+                JOptionPane.showMessageDialog(this, "Todos los datos son requeridos", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                int codigo = Integer.parseInt(datos[0]);
+                Computador computador = new Computador(codigo, Integer.parseInt(datos[1]), datos[2], datos[3]);
+                sistemaPrincipal.modificarComputador(codigo, computador);
+                actualizarTablaComputadores();
+                cargarListaComputadores();
+                JOptionPane.showMessageDialog(this, "Computador modificado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     /**
      * Completar
      */
@@ -1244,22 +1317,26 @@ public class PanelPrincipal extends javax.swing.JPanel {
         comboCategoriaPrograma.addItem(programa.getIDE());
     }
 
-    private void mostrarComputador(Computador miComputador) 
+     /**
+     * Método encargado de retornar el objeto del mundo sistema principal
+     * mediante el patron singleton.
+     * @return 
+     */
+    public static SistemaPrincipal darObjeto()
     {
-        sistemaPrincipal.darComputador();
-    }
-    public void cargarListaMan(String valores)
-    {
-        int fila = tablaMantenimiento.getRowCount();
-        int i;
-        for (i = 0; i < fila; i++) {
-            String valor = (String) tablaMantenimiento.getValueAt(i, 1);
-            valores += valor;
-            // Con esta condición solo ponemos comas hasta el penúltimo valor 🙂
-            if (i < (fila - 1)) {
-                valores += ", ";
-            }
+        if(sistemaPrincipal == null)
+        {
+            sistemaPrincipal = new SistemaPrincipal();
         }
-       
+        return sistemaPrincipal;
+    }
+
+   /**
+    * 
+     * @return 
+    */
+    public void actualizarTablaComputadores()
+    {
+       tablaPc.fireTableDataChanged();
     }
 }

@@ -193,7 +193,9 @@ public class SistemaPrincipal {
             nuevo.getPrecio();
             nuevo.getEncargado();
             nuevo.getUbicacion();
+            computadores.remove(miComputador);
             computadores.add(nuevo);
+            
           
         }
         else

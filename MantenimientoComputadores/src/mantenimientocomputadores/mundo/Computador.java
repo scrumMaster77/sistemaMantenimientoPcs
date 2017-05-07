@@ -352,8 +352,8 @@ public class Computador {
      * que se hace el mantenimiento.
      * @param elNombreTecnico: El nombre del técnico quien hace el mantenimiento a un computador.
      * @param laDescripcion : La descripción del mantenimiento que hace el técnico a un computador.
-     * @throws java.lang.Exception :Excepción. Si el computador buscado por el código ya tiene un mantenimiento agregado se debe 
-     * enviar una excepción informando del error.
+     * @throws java.lang.Exception :Excepción. Si el computador buscado por el código ya tiene un mantenimiento agregado en fecha específica, se debe 
+     * lanzar una excepción informando este error.
      */
     public void agregarMantenimiento(int codigo,Date laFecha, String elNombreTecnico, String laDescripcion) throws Exception
     {
@@ -365,7 +365,7 @@ public class Computador {
         }
         else
         {
-            throw new Exception("Ya existe este mantenimiento  para este computador con código: "+ codigo +"\n"+"Por favor elija la opción 'Modificar'");
+            throw new Exception("En este día ya se registró un mantenimiento para el computador con código: "+ codigo +"\n"+"Por favor elija la opción 'Modificar'");
         }
     }
 
@@ -470,6 +470,7 @@ public class Computador {
      * @return : Retorna un ArrayList de tipo mantenimientos.
      */
     public ArrayList<Mantenimiento> getMantenimientos () {
+        
         return mantenimientos;
     }
 
