@@ -209,7 +209,9 @@ public class SistemaPrincipal {
      * @param codigo
      * @param nueva
      */
-    public void modificarCaracteristicaFisica (int codigo, CaracteristicaFisica nueva) {
+    public void modificarCaracteristicaFisica (int codigo, CaracteristicaFisica nueva) throws Exception
+    {
+        
     }
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.D0919868-180E-67BC-3D6F-1CDD29A49A4B]

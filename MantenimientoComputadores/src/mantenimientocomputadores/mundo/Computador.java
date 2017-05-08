@@ -1,5 +1,6 @@
 package mantenimientocomputadores.mundo;
 
+import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
 import java.util.ArrayList; 
 import java.util.Date;
 
@@ -77,7 +78,7 @@ public class Computador {
     /**
      * ArrayList de la clase Computador que contiene todos los computadores.
      */
-    private ArrayList compatudares;
+    private ArrayList computadores;
     
     //--------------------------------------------------------------------------
     //--------------------------------------------------------------------------
@@ -419,8 +420,23 @@ public class Computador {
     /**
      * Completar
      */
-    public void modificarMantenimiento () {
-    }
+    public void modificarMantenimiento (int codigo, Mantenimiento nueva) throws Exception
+        {
+            Mantenimiento miMantenimiento = buscarMantenimiento(codigo);
+            if(miMantenimiento != null)
+            {
+                nueva.getCodigo();
+                nueva.getFecha();
+                nueva.getDescripcion();
+                nueva.getNombreTecnicoMantenimiento();
+                mantenimientos.remove(miMantenimiento);
+                mantenimientos.add(nueva);
+            }
+            else
+            {
+                throw new Exception("No se pudo modificar el Mantenimiento, verifique la información");
+            }
+        }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.521ED7A6-A809-BF89-0328-564F91A3F53B]
@@ -428,8 +444,22 @@ public class Computador {
     /**
      * Completar
      */
-    public void modificarProgramaInstalado () {
-    }
+    public void modificarProgramaInstalado (int codigo, ProgramaInstalado nuevo) throws Exception
+        {
+            ProgramaInstalado miProgramaInstalado = buscarPrograma(codigo);
+            if(miProgramaInstalado != null)
+            {
+                nuevo.getCodigo();
+                nuevo.getDescripcion();
+                nuevo.getCategoria();
+                programas.remove(miProgramaInstalado);
+                programas.add(nuevo);
+            }
+            else
+            {
+                throw new Exception("No se pudo modificar el Programa Instalado, verifique la información");
+            }
+        }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.035164BD-9837-71F4-5242-0B322F670408]
@@ -437,8 +467,21 @@ public class Computador {
     /**
      * Completar
      */
-    public void modificarCaracteristicaFisica () {
-    }
+    public void modificarCaracteristicaFisica (int codigo, CaracteristicaFisica nueva) throws Exception {
+        CaracteristicaFisica miCaracteristicaFisica = buscarCaracteristica(codigo);
+        if(miCaracteristicaFisica != null)
+        {
+            nueva.getCodigo();
+            nueva.getDescripcion();
+            nueva.getCategoria();
+            caracteristicas.remove(miCaracteristicaFisica);
+            caracteristicas.add(nueva);
+        }
+        else
+        {
+            throw new Exception("No se pudo modificar la Caracteristica Física, verifique la información");
+        }
+}
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.45F00FEF-3E4F-8486-E9EF-77DCF2B31361]

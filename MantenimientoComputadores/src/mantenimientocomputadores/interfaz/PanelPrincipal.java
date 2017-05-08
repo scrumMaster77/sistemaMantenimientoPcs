@@ -14,8 +14,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.TabableView;
 import mantenimientocomputadores.mundo.CaracteristicaFisica;
 import mantenimientocomputadores.mundo.Computador;
+import mantenimientocomputadores.mundo.Mantenimiento;
 import mantenimientocomputadores.mundo.ProgramaInstalado;
 import mantenimientocomputadores.mundo.SistemaPrincipal;
 
@@ -52,6 +54,20 @@ public class PanelPrincipal extends javax.swing.JPanel {
      */
     private TablaComputadores tablaPc;
     //private DefaultTableModel tablaPc;
+    
+    /**
+     * Completar
+     */
+    private TablaCaracteristicas tablaCaracteristicaPc;
+    
+    /**
+     * Completar
+     */
+    private TablaProgramas tablaProgramaPc;
+    /**
+     * Completar
+     */
+    private TablaMantenimientos tablaMantenimientoPc;
     
     /**
      * 
@@ -195,7 +211,6 @@ public class PanelPrincipal extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
         comboComputadoresMantenimiento = new javax.swing.JComboBox<>();
-        comboFecha = new com.toedter.calendar.JDateChooser();
         jPanel13 = new javax.swing.JPanel();
         btn_AgregarMantenimiento = new javax.swing.JButton();
         btn_ModificarMantenimiento = new javax.swing.JButton();
@@ -450,6 +465,11 @@ public class PanelPrincipal extends javax.swing.JPanel {
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Opciones"));
 
         btn_ModificarCaracteristica.setText("Modificar");
+        btn_ModificarCaracteristica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ModificarCaracteristicaActionPerformed(evt);
+            }
+        });
 
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -713,7 +733,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(txtEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -722,9 +742,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboComputadoresMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(comboComputadoresMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
@@ -735,10 +753,8 @@ public class PanelPrincipal extends javax.swing.JPanel {
                     .addComponent(jLabel20)
                     .addComponent(comboComputadoresMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17)
-                    .addComponent(comboFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addComponent(jLabel17)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18)
                     .addComponent(txtEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -759,6 +775,11 @@ public class PanelPrincipal extends javax.swing.JPanel {
         });
 
         btn_ModificarMantenimiento.setText("Modificar");
+        btn_ModificarMantenimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ModificarMantenimientoActionPerformed(evt);
+            }
+        });
 
         btn_EliminarMantenimiento.setText("Eliminar");
 
@@ -878,6 +899,8 @@ public class PanelPrincipal extends javax.swing.JPanel {
      */
     private void btn_modificarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarProgramaActionPerformed
         // TODO add your handling code here:
+        txtCodigo.setEditable(true);
+        modificarPrograma();
     }//GEN-LAST:event_btn_modificarProgramaActionPerformed
 
     /**
@@ -886,8 +909,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
      */
     private void btn_AgregarComputadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarComputadorActionPerformed
         // TODO add your handling code here:
-       
-            agregarComputador();
+        agregarComputador();
         
     }//GEN-LAST:event_btn_AgregarComputadorActionPerformed
 
@@ -964,6 +986,18 @@ public class PanelPrincipal extends javax.swing.JPanel {
         modificarComputador();
     }//GEN-LAST:event_btn_modificarActionPerformed
 
+    private void btn_ModificarCaracteristicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarCaracteristicaActionPerformed
+        // TODO add your handling code here:
+        txtCodigo.setEditable(true);
+        modificarCaracteristica();
+    }//GEN-LAST:event_btn_ModificarCaracteristicaActionPerformed
+
+    private void btn_ModificarMantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarMantenimientoActionPerformed
+        // TODO add your handling code here:
+        txtCodigo.setEditable(true);
+        modificarMantenimiento();
+    }//GEN-LAST:event_btn_ModificarMantenimientoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_AgregarComputador;
@@ -986,7 +1020,6 @@ public class PanelPrincipal extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> comboComputadoresCaracteristicas;
     private javax.swing.JComboBox<String> comboComputadoresMantenimiento;
     private javax.swing.JComboBox<String> comboComputadoresProgramas;
-    private com.toedter.calendar.JDateChooser comboFecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1108,8 +1141,6 @@ public class PanelPrincipal extends javax.swing.JPanel {
             tablaCaracteristicaFisica.addRow(caracteristicas);
             JOptionPane.showMessageDialog(this, "Caracteristica registrada satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
-        
-       
     }
     
    /**
@@ -1269,6 +1300,98 @@ public class PanelPrincipal extends javax.swing.JPanel {
         }
     }
     
+    public void modificarCaracteristica(){ 
+        String[] datos = new String[3];
+        datos[0] = comboComputadoresCaracteristicas.getSelectedItem().toString();
+        datos[1] = comboCategoriaCaracteristica.getSelectedItem().toString();
+        datos[2] = txt_descripcionCaracteristica.getText();
+        txt_descripcionCaracteristica.setText(null);
+        try {
+            if(datos[0].equals("") || datos[1].equals("")|| datos[2].equals("")){
+                JOptionPane.showMessageDialog(this, "todos los datos son requeridos","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                int codigo = Integer.parseInt(datos[0]);
+                CaracteristicaFisica caracteristicaFisica = new CaracteristicaFisica(codigo, datos[1], datos[2]);
+                computador.modificarCaracteristicaFisica(codigo, caracteristicaFisica);
+                actualizarTablaCaracteristicas();
+                cargarListaCaracteristicas();
+                JOptionPane.showMessageDialog(this, "Caracteristica modificada satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }
+    
+    public void modificarPrograma(){
+        String[] datos = new String[3];
+        datos[0] = comboComputadoresProgramas.getSelectedItem().toString();
+        datos[1] = comboCategoriaPrograma.getSelectedItem().toString();
+        datos[2] = txt_descripcionPrograma.getText();
+        txt_descripcionPrograma.setText(null);
+        try {
+            if(datos[0].equals("") || datos[1].equals("")|| datos[2].equals("")){
+                JOptionPane.showMessageDialog(this, "todos los datos son requeridos","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                int codigo = Integer.parseInt(datos[0]);
+                ProgramaInstalado programaInstalado = new ProgramaInstalado(codigo, datos[1], datos[2]);
+                computador.modificarProgramaInstalado(codigo, programaInstalado);
+                actualizarTablaProgramas();
+                cargarListaProgramas();
+                JOptionPane.showMessageDialog(this, "Programa Instalado modificado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void modificarMantenimiento() 
+    {
+        String[] datos = new String[4];
+        datos[0] = comboComputadoresMantenimiento.getSelectedItem().toString();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaActual = new Date();
+        String dateInString = "";
+        boolean fechaValidada = false;
+     
+        if(comboFecha.getDate() != null)
+        {
+            dateInString = formatter.format(comboFecha.getDate());
+            int comparacion = fechaActual.compareTo(comboFecha.getDate());
+            if(comparacion >= 0)
+            {
+                fechaValidada = true;
+            }
+        }
+        datos[1] = dateInString;
+        datos[2] = txtEncargado.getText();
+        txtEncargado.setText(null);
+        datos[3] = txtDescripcion.getText();
+        txtDescripcion.setText(null);
+        
+        try {
+            if (datos[0].equals("") || datos[1].equals("") || datos[2].equals("") || datos[3].equals("")) {
+               JOptionPane.showMessageDialog(this, "Todos los datos son requeridos", "Error", JOptionPane.ERROR_MESSAGE); 
+            }
+            else {
+                int codigo = Integer.parseInt(datos[0]);
+                Mantenimiento mantenimiento = new Mantenimiento(codigo, fechaActual, datos[2], datos[3]);:
+                sistemaPrincipal.modificarMantenimiento(codigo, mantenimiento);
+                actualizarTablaMantenimientos();
+                cargarListaMantenimientos();
+                JOptionPane.showMessageDialog(this, "Mantenimiento modificado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     /**
      * Completar
      */
@@ -1286,6 +1409,38 @@ public class PanelPrincipal extends javax.swing.JPanel {
         }
     }
    
+    /**
+     * Completar
+     */
+    private void cargarListaCaracteristicas()
+    {
+        ArrayList listaCaracteristicaPC = new ArrayList<CaracteristicaFisica>();::
+        listaCaracteristicaPC = computador.getCaracteristicas();
+        comboComputadoresCaracteristicas.removeAllItems();
+        comboComputadoresProgramas.removeAllItems();
+        comboComputadoresMantenimiento.removeAllItems();
+        for (int i = 0; i < listaCaracteristicaPC.size(); i++) {
+            comboComputadoresCaracteristicas.addItem(listaCaracteristicaPC.get(i).toString());
+            comboComputadoresProgramas.addItem(listaCaracteristicaPC.get(i).toString());
+            comboComputadoresMantenimiento.addItem(listaCaracteristicaPC.get(i).toString());
+        }
+    }
+    
+    /**
+     * Completar
+     */
+    private void cargarListaProgramas()
+    {
+        
+    }
+    
+    /**
+     * Completar
+     */
+    private void cargarListaMantenimientos()
+    {
+        
+    }
     
     /**
      * Completar
@@ -1333,10 +1488,34 @@ public class PanelPrincipal extends javax.swing.JPanel {
 
    /**
     * 
-     * @return 
     */
     public void actualizarTablaComputadores()
     {
        tablaPc.fireTableDataChanged();
     }
+    
+    /**
+     * 
+     */
+    public void actualizarTablaCaracteristicas()
+    {
+        tablaCaracteristicaPc.fireTableDataChanged();
+    }  
+    
+    /**
+     * 
+     */
+    public void actualizarTablaProgramas()
+    {
+        tablaProgramaPc.fireTableDataChanged();
+    }
+    
+    /**
+     * 
+     */    
+    public void actualizarTablaMantenimientos()
+    {
+        tablaMantenimientoPc.fireTableDataChanged();
+    }
+    
 }
