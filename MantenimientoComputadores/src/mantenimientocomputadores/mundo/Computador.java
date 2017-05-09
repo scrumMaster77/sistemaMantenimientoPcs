@@ -47,6 +47,8 @@ public class Computador {
      * ubicación : La ubicación donde se encuentra el computador
      */
     private String ubicacion;
+    
+    private int totalMantenimientos;
   
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.084C142F-2373-0860-8774-7D7BD1AAB2D0]
@@ -390,6 +392,26 @@ public class Computador {
         }
         return mantenimiento;
     }
+     
+     
+      public int darTotalMantenimientos(){
+         return mantenimientos.size();
+     }
+     
+    
+     
+     
+             
+     public int darman(){
+         int posicion=0;
+         for (int i = 0; i < mantenimientos.size(); i++) {
+             
+             if(mantenimientos.size()==0){
+                 posicion++;
+             }
+         }
+         return posicion;
+     }
     /**
      * Completar
      */
@@ -562,6 +584,14 @@ public class Computador {
     public String toString() {
         return ""+codigo;
     }
-        
+       
+       public int getTotalMantenimientos() {
+        return totalMantenimientos;
+    }
+
+    public void setTotalMantenimientos(int totalMantenimientos) {
+        this.totalMantenimientos = totalMantenimientos;
+    }
+      
 }
 

@@ -342,6 +342,53 @@ public class SistemaPrincipal {
     public void setComputadores (ArrayList<Computador> val) {
         this.computadores = val;
     }
+    
+         public ArrayList darEquiposConMasMantenimientos(){
+         ArrayList equipos=new ArrayList();
+            int uno=0;
+            int dos=0;
+            int tres=0;
+            int codigoUno=0;
+            int codigoDos=0;
+            int codigoTres=0;
+          for( int i = 1; i < computadores.size( ); i++ )
+            {
+               Computador miComputador = (Computador)computadores.get(i);
+               int total = miComputador.darTotalMantenimientos();
+                if (total>tres && total>dos && total>uno) {
+                    uno=total;
+                    codigoUno = miComputador.getCodigo();   
+                }else if(total>tres && total>dos && total<uno){
+                    dos=total;
+                    codigoDos=miComputador.getCodigo();
+                }else if(total>tres && total<dos && total<uno){
+                    tres=total;
+                    codigoTres=miComputador.getCodigo();
+                }
+            }
+          
+          Computador computadorUno=buscarComputador(codigoUno);
+          computadorUno.setTotalMantenimientos(uno);
+          equipos.add(computadorUno);
+          Computador computadorDos=buscarComputador(codigoDos);
+          computadorDos.setTotalMantenimientos(dos);
+          equipos.add(computadorDos);
+          Computador computadorTres=buscarComputador(codigoTres);
+          computadorTres.setTotalMantenimientos(tres);
+          equipos.add(computadorTres);
+          return equipos;
+     }
+     
+public void actualizarTotalMantenimientos(int codigo, int totalMantenimientos){
+    boolean encontrado =false;
+    for (int i = 0; i < computadores.size() && !encontrado ; i++) {
+        Computador miComputador = (Computador)computadores.get(i);
+        if(miComputador.getCodigo()==codigo){
+            miComputador.setTotalMantenimientos(totalMantenimientos);
+            encontrado=true;
+        }
+    }
+}
 
 }
 
